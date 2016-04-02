@@ -14,6 +14,7 @@
 		AD9A023F1CAF3A1D008862AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */; };
 		AD9A024A1CAF3A1E008862AD /* InTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02491CAF3A1E008862AD /* InTests.swift */; };
 		AD9A02551CAF3A1E008862AD /* InUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02541CAF3A1E008862AD /* InUITests.swift */; };
+		AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02621CAF4096008862AD /* NewConversationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		AD9A02501CAF3A1E008862AD /* InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A02541CAF3A1E008862AD /* InUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InUITests.swift; sourceTree = "<group>"; };
 		AD9A02561CAF3A1E008862AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD9A02621CAF4096008862AD /* NewConversationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConversationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				AD9A023B1CAF3A1D008862AD /* Assets.xcassets */,
 				AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */,
 				AD9A02401CAF3A1D008862AD /* Info.plist */,
+				AD9A02621CAF4096008862AD /* NewConversationController.swift */,
 			);
 			path = In;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				AD9A02371CAF3A1D008862AD /* ViewController.swift in Sources */,
 				AD9A02351CAF3A1D008862AD /* AppDelegate.swift in Sources */,
+				AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
