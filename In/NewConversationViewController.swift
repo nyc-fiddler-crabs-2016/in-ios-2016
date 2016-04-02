@@ -35,8 +35,9 @@ class NewConversationViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
-        print(navVc.viewControllers.first!.nibName)
-        if navVc.viewControllers.first!.nibName == Optional("TTs-EY-WL6-view-1BE-8y-lZM"){
+        print(String(navVc.viewControllers.first!.classForCoder))
+        let ConversationViewControllerStr = "ConversationViewController"
+        if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = ref.authData.uid
             chatVc.senderDisplayName = "peter"
