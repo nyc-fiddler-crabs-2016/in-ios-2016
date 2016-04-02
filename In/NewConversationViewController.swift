@@ -12,6 +12,10 @@ import Firebase
 
 class NewConversationViewController: UIViewController {
     
+    @IBOutlet weak var expirationDate: UIDatePicker!
+    @IBOutlet weak var conversationName: UITextField!
+    
+    
     // MARK: Properties
     var ref: Firebase!
     var conversationRef: Firebase!
@@ -31,8 +35,8 @@ class NewConversationViewController: UIViewController {
         
     }
 
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(self.expirationDate.date)
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
         print(String(navVc.viewControllers.first!.classForCoder))
@@ -41,12 +45,12 @@ class NewConversationViewController: UIViewController {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = ref.authData.uid
             chatVc.senderDisplayName = "peter"
-
+            let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
             let conversationItem = [
-                "name": "Conversation Name",
+                "name": self.conversationName.text,
                 "owner": chatVc.senderId,
-                "date": "tomorrow"
+                "date": String(dateStr)
             ]
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key

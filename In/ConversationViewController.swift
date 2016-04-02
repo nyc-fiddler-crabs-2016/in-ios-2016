@@ -40,6 +40,7 @@ class ConversationViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "test"
         setupBubbles()
         messageRef = conversationRef.childByAppendingPath("messages")
         
