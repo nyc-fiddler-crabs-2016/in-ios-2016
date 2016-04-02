@@ -16,6 +16,11 @@ class ConversationViewController: JSQMessagesViewController {
     let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/")
     var messageRef: Firebase!
     var messages = [JSQMessage]()
+    var conversationKey: String!
+    var conversationRef: Firebase!{
+    
+    return Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(conversationKey)")
+    }
     
     var userIsTypingRef: Firebase!
     var usersTypingQuery: FQuery!
@@ -36,7 +41,7 @@ class ConversationViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBubbles()
-        messageRef = rootRef.childByAppendingPath("messages")
+        messageRef = conversationRef.childByAppendingPath("messages")
         
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
@@ -96,7 +101,8 @@ class ConversationViewController: JSQMessagesViewController {
             // 3
             let id = snapshot.value["senderId"] as! String
             let text = snapshot.value["text"] as! String
-            
+            let displayName = snapshot.value["senderdisplayName"]
+            print(displayName)
             // 4
             self.addMessage(id, text: text)
             
@@ -141,7 +147,8 @@ class ConversationViewController: JSQMessagesViewController {
         let itemRef = messageRef.childByAutoId() // 1
         let messageItem = [ // 2
             "text": text,
-            "senderId": senderId
+            "senderId": senderId,
+            "senderdisplayName": senderDisplayName
         ]
         itemRef.setValue(messageItem) // 3
         
