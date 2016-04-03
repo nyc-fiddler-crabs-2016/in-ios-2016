@@ -52,28 +52,15 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
                             //some people are stored under "iphone" label, add conditional for this after MVP
                             let a = phoneNumber.value as! CNPhoneNumber
                             selectedNumber = a.stringValue
-//                            print("\(a.stringValue)")
                         }
                     }
                 }
-        print(usersRef)
-//        selectedContact = "Name: \(contact.givenName) \(contact.familyName)  \nMobile: \(selectedNumber)"
-        selectedContact["\(contact.givenName)"] = ("\(contact.givenName) \(contact.familyName) \(selectedNumber)")
-
+        selectedContact["\(contact.givenName)"] = ("\(contact.givenName) \(contact.familyName)")
         
         print(selectedContact)
         showParticipant.text = selectedContact["\(contact.givenName)"]
         
     }
-    
-    
-    //May be a problem because of the Sender in the line below
-//    @IBAction func showPeople(sender:CNContactPickerDelegate){
-//        showParticipant.text = "\(selectedContact)"
-//    }
-//    
-    
-    
     
     
     @IBAction func showAllContacts(sender: AnyObject) {
