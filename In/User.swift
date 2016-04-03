@@ -17,7 +17,8 @@ class User {
     var password:String
     //MARK: Initializtion
     
-    init(id:String, name:String, email:String, password:String){
+    init(id:String, name:String, email:String, password:String
+        ){
         //Messages temporarily removed from initialize parameters, put them back in later
         self.id = id
         self.name = name
