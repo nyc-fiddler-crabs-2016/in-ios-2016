@@ -11,7 +11,7 @@ import UIKit
 class ConversationTableCellController: UITableViewCell {
     
     //MARK: Properties
-    
+
     @IBOutlet weak var conversationImageLabel: UIView!
     @IBOutlet weak var conversationLabel: UIView!
     
