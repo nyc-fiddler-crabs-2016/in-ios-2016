@@ -38,20 +38,16 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     }
     //returns selected contact
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact){
-//        let selectedContact = contact.phoneNumbers
-//        print(contact.phoneNumbers)
+        print(CNContactPhoneNumbersKey)
         
-
-        if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
-            for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                let a = phoneNumber.value as! CNPhoneNumber
-                print("\(a.stringValue)")
-            }
-        }
-        
-        
-        
-//        print(selectedContact.valueForKey())
+                if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
+                    for phoneNumber:CNLabeledValue in contact.phoneNumbers {
+                        if (phoneNumber.label == "_$!<Mobile>!$_"){
+                            let a = phoneNumber.value as! CNPhoneNumber
+                            print("\(a.stringValue)")
+                        }
+                    }
+                }
     }
     
     @IBAction func showAllContacts(sender: AnyObject) {

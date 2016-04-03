@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "In/NewConversationViewController.swift"
-            timestampString = "481399429.822602"
+            timestampString = "481401518.464505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "contactPicker(_:didSelectContact:)"
             landmarkType = "5">
          </BreakpointContent>
