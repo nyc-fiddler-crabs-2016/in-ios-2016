@@ -43,7 +43,7 @@ class NewConversationViewController: UIViewController {
         let ConversationViewControllerStr = "ConversationViewController"
         if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
-            chatVc.senderId = ref.authData.uid
+            chatVc.senderId = "1e7110ff-86b9-442b-85b7-b225749875b2"
             chatVc.senderDisplayName = "peter"
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
