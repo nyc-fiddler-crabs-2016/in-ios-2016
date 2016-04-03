@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import ContactsUI
+import Contacts
 
 class NewConversationViewController: UIViewController {
     
@@ -33,6 +35,11 @@ class NewConversationViewController: UIViewController {
         }
 
         
+    }
+   
+    @IBAction func showAllContacts(sender: AnyObject) {
+        let contactPickerViewController = CNContactPickerViewController()
+        presentViewController(contactPickerViewController, animated: true, completion: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

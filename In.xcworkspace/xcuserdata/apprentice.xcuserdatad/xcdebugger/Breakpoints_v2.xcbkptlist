@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "In/NewConversationViewController.swift"
-            timestampString = "481328363.028422"
+            timestampString = "481386927.138619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "NewConversationViewController"
             landmarkType = "3">
             <Locations>
