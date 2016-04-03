@@ -73,7 +73,6 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // print(self.expirationDate.date)
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
         print(String(navVc.viewControllers.first!.classForCoder))

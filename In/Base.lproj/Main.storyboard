@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oU7-vg-pIf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pbM-I1-RX5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -41,7 +41,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nq-ZR-0qF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989" y="-2269"/>
+            <point key="canvasLocation" x="2245" y="-2353"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -270,7 +270,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-Ut-aev">
                                 <rect key="frame" x="-5" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Log in or Sign Up" id="yPc-2t-1YG"/>
+                                    <navigationItem title="Get Started" id="yPc-2t-1YG"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lms-ub-Asg">
@@ -307,23 +307,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-db-5wm">
-                                <rect key="frame" x="117" y="264" width="74" height="21"/>
+                                <rect key="frame" x="107" y="265" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg3-UF-V0h">
-                                <rect key="frame" x="240" y="338" width="110" height="77"/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="signUp:" destination="pbM-I1-RX5" eventType="touchUpInside" id="C1O-0c-gI4"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ux-Fn-Bm1">
-                                <rect key="frame" x="216" y="261" width="182" height="30"/>
+                                <rect key="frame" x="206" y="262" width="182" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAt-MG-fng">
+                                <rect key="frame" x="353" y="350" width="101" height="51"/>
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="logIn:" destination="pbM-I1-RX5" eventType="touchUpInside" id="dRn-Xv-37k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg3-UF-V0h">
+                                <rect key="frame" x="107" y="337" width="136" height="77"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="signUp:" destination="pbM-I1-RX5" eventType="touchUpInside" id="C1O-0c-gI4"/>
+                                    <segue destination="oU7-vg-pIf" kind="show" identifier="SignUpToMainPage" id="WT1-Qd-ObZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -355,7 +363,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM2-0z-wF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-1735"/>
+            <point key="canvasLocation" x="1519" y="-2111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ODY-Tx-YSZ">
@@ -382,6 +390,6 @@
         <image name="bubble_stroked.png" width="56" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EPN-w7-f5q"/>
+        <segue reference="WT1-Qd-ObZ"/>
     </inferredMetricsTieBreakers>
 </document>
