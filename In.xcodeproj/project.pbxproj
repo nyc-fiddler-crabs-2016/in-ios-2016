@@ -12,6 +12,10 @@
 		098EF17C1CB1609900471087 /* SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF17B1CB1609900471087 /* SearchContactViewController.swift */; };
 		098EF17E1CB160AC00471087 /* AddUpdateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */; };
 		098EF1801CB160B500471087 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF17F1CB160B500471087 /* ContactsViewController.swift */; };
+		098EF1841CB1649600471087 /* ConversationTableCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1831CB1649600471087 /* ConversationTableCellController.swift */; };
+		098EF1861CB16ACF00471087 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1851CB16ACF00471087 /* Conversation.swift */; };
+		098EF18A1CB16E1100471087 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1891CB16E1100471087 /* Message.swift */; };
+		098EF18C1CB16E1800471087 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF18B1CB16E1800471087 /* User.swift */; };
 		AD9A02351CAF3A1D008862AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02341CAF3A1D008862AD /* AppDelegate.swift */; };
 		AD9A02371CAF3A1D008862AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02361CAF3A1D008862AD /* ViewController.swift */; };
 		AD9A023A1CAF3A1D008862AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A02381CAF3A1D008862AD /* Main.storyboard */; };
@@ -46,6 +50,10 @@
 		098EF17B1CB1609900471087 /* SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContactViewController.swift; sourceTree = "<group>"; };
 		098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUpdateContactViewController.swift; sourceTree = "<group>"; };
 		098EF17F1CB160B500471087 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		098EF1831CB1649600471087 /* ConversationTableCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableCellController.swift; sourceTree = "<group>"; };
+		098EF1851CB16ACF00471087 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		098EF1891CB16E1100471087 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		098EF18B1CB16E1800471087 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2448E8F46BBC8C662FDB4FD0 /* Pods_In.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_In.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819CF699326BA90F32E78C17 /* Pods-In.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-In.release.xcconfig"; path = "Pods/Target Support Files/Pods-In/Pods-In.release.xcconfig"; sourceTree = "<group>"; };
 		A3675113992F460AFA4C2184 /* Pods-In.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-In.debug.xcconfig"; path = "Pods/Target Support Files/Pods-In/Pods-In.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +99,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		098EF1871CB16CEA00471087 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD9A02621CAF4096008862AD /* NewConversationController.swift */,
+				098EF17B1CB1609900471087 /* SearchContactViewController.swift */,
+				098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */,
+				098EF17F1CB160B500471087 /* ContactsViewController.swift */,
+				AD9A02361CAF3A1D008862AD /* ViewController.swift */,
+				094144461CB01F4200944F69 /* NewConversationViewController.swift */,
+				094144441CB01B6000944F69 /* ConversationViewController.swift */,
+				098EF1831CB1649600471087 /* ConversationTableCellController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		098EF1881CB16CFD00471087 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				098EF1851CB16ACF00471087 /* Conversation.swift */,
+				098EF1891CB16E1100471087 /* Message.swift */,
+				098EF18B1CB16E1800471087 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		68771715DC2156A79860F2DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,18 +166,13 @@
 		AD9A02331CAF3A1D008862AD /* In */ = {
 			isa = PBXGroup;
 			children = (
-				098EF17B1CB1609900471087 /* SearchContactViewController.swift */,
-				098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */,
-				098EF17F1CB160B500471087 /* ContactsViewController.swift */,
+				098EF1871CB16CEA00471087 /* Controllers */,
 				AD9A02341CAF3A1D008862AD /* AppDelegate.swift */,
-				AD9A02361CAF3A1D008862AD /* ViewController.swift */,
-				094144461CB01F4200944F69 /* NewConversationViewController.swift */,
-				094144441CB01B6000944F69 /* ConversationViewController.swift */,
 				AD9A02381CAF3A1D008862AD /* Main.storyboard */,
+				098EF1881CB16CFD00471087 /* Models */,
 				AD9A023B1CAF3A1D008862AD /* Assets.xcassets */,
 				AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */,
 				AD9A02401CAF3A1D008862AD /* Info.plist */,
-				AD9A02621CAF4096008862AD /* NewConversationController.swift */,
 			);
 			path = In;
 			sourceTree = "<group>";
@@ -352,10 +380,14 @@
 				098EF17E1CB160AC00471087 /* AddUpdateContactViewController.swift in Sources */,
 				AD9A02371CAF3A1D008862AD /* ViewController.swift in Sources */,
 				098EF17C1CB1609900471087 /* SearchContactViewController.swift in Sources */,
+				098EF1841CB1649600471087 /* ConversationTableCellController.swift in Sources */,
 				AD9A02351CAF3A1D008862AD /* AppDelegate.swift in Sources */,
 				094144451CB01B6000944F69 /* ConversationViewController.swift in Sources */,
+				098EF18A1CB16E1100471087 /* Message.swift in Sources */,
 				098EF1801CB160B500471087 /* ContactsViewController.swift in Sources */,
+				098EF18C1CB16E1800471087 /* User.swift in Sources */,
 				094144471CB01F4200944F69 /* NewConversationViewController.swift in Sources */,
+				098EF1861CB16ACF00471087 /* Conversation.swift in Sources */,
 				AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
