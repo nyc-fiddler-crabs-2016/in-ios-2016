@@ -1,5 +1,5 @@
 //
-//  Conversation.swift
+//  Message.swift
 //  In
 //
 //  Created by Apprentice on 4/3/16.
@@ -8,23 +8,21 @@
 
 import UIKit
 
-class Conversation{
+class Message{
     //MARK: Properties
     var conversationId:String
-    var name:String
-    var date:String
-    var owner:String
-    var messages = [String]()
-    //String is a placeholder for the Message Object
-    
+    var text:String
+    var senderId:String
+    var senderdisplayName:String
+
     //MARK: Initializtion
     
-    init(name:String, date:String, owner:String, conversationId:String){
+    init(text:String, senderId:String, senderdisplayName:String, conversationId:String){
         //Messages temporarily removed from initialize parameters, put them back in later
-        self.name = name
-        self.date = date
-        self.owner = owner
+        self.text = text
         self.conversationId = conversationId
+        self.senderId = senderId
+        self.senderdisplayName = senderdisplayName
     }
-
+    
 }
