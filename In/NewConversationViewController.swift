@@ -12,7 +12,8 @@ import Firebase
 import ContactsUI
 import Contacts
 
-class NewConversationViewController: UIViewController {
+
+class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     
     @IBOutlet weak var expirationDate: UIDatePicker!
     @IBOutlet weak var conversationName: UITextField!
@@ -21,11 +22,13 @@ class NewConversationViewController: UIViewController {
     // MARK: Properties
     var ref: Firebase!
     var conversationRef: Firebase!
+    var usersRef: Firebase!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
         conversationRef = ref.childByAppendingPath("conversations")
+        usersRef = ref.childByAppendingPath("users")
     }
     
     @IBAction func newConversationDidTouch(sender: AnyObject) {
@@ -33,17 +36,44 @@ class NewConversationViewController: UIViewController {
             if error != nil { print(error.description); return }
             self.performSegueWithIdentifier("createConvo", sender: nil)
         }
-
+        
         
     }
-   
+    var selectedContact = ["Contact" : String()]
+    
+    
+    @IBOutlet weak var showParticipant: UILabel!
+//    @IBOutlet weak var showParticipant: UILabel!
+    //returns selected contact
+    func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact){
+        //        print(CNContactPhoneNumbersKey)
+        var selectedNumber = ""
+        
+        if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
+            for phoneNumber:CNLabeledValue in contact.phoneNumbers {
+                if (phoneNumber.label == "_$!<Mobile>!$_"){
+                    //some people are stored under "iphone" label, add conditional for this after MVP
+                    let a = phoneNumber.value as! CNPhoneNumber
+                    selectedNumber = a.stringValue
+                }
+            }
+        }
+        selectedContact["\(contact.givenName)"] = ("\(contact.givenName) \(contact.familyName)")
+        
+        print(selectedContact)
+        showParticipant.text = selectedContact["\(contact.givenName)"]
+        
+    }
+    
+    
     @IBAction func showAllContacts(sender: AnyObject) {
         let contactPickerViewController = CNContactPickerViewController()
+        contactPickerViewController.delegate = self
         presentViewController(contactPickerViewController, animated: true, completion: nil)
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(self.expirationDate.date)
+        // print(self.expirationDate.date)
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
         print(String(navVc.viewControllers.first!.classForCoder))
@@ -52,12 +82,14 @@ class NewConversationViewController: UIViewController {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = "1e7110ff-86b9-442b-85b7-b225749875b2"
             chatVc.senderDisplayName = "peter"
+            //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
             let conversationItem = [
                 "name": self.conversationName.text,
                 "owner": chatVc.senderId,
-                "date": String(dateStr)
+                "date": String(dateStr),
+                "participant": "test"
             ]
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
