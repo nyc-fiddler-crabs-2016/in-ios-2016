@@ -12,6 +12,7 @@ import Firebase
 import ContactsUI
 import Contacts
 
+
 class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     
     @IBOutlet weak var expirationDate: UIDatePicker!
@@ -21,11 +22,13 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     // MARK: Properties
     var ref: Firebase!
     var conversationRef: Firebase!
+    var usersRef: Firebase!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
         conversationRef = ref.childByAppendingPath("conversations")
+        usersRef = ref.childByAppendingPath("users")
     }
     
     @IBAction func newConversationDidTouch(sender: AnyObject) {
@@ -36,10 +39,29 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
 
         
     }
+    var selectedContact = ["Contact" : String()]
+    @IBOutlet weak var showParticipant: UILabel!
     //returns selected contact
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact){
-        print(contact)
+//        print(CNContactPhoneNumbersKey)
+        var selectedNumber = ""
+        
+                if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
+                    for phoneNumber:CNLabeledValue in contact.phoneNumbers {
+                        if (phoneNumber.label == "_$!<Mobile>!$_"){
+                            //some people are stored under "iphone" label, add conditional for this after MVP
+                            let a = phoneNumber.value as! CNPhoneNumber
+                            selectedNumber = a.stringValue
+                        }
+                    }
+                }
+        selectedContact["\(contact.givenName)"] = ("\(contact.givenName) \(contact.familyName)")
+        
+        print(selectedContact)
+        showParticipant.text = selectedContact["\(contact.givenName)"]
+        
     }
+    
     
     @IBAction func showAllContacts(sender: AnyObject) {
         let contactPickerViewController = CNContactPickerViewController()
@@ -63,7 +85,8 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
             let conversationItem = [
                 "name": self.conversationName.text,
                 "owner": chatVc.senderId,
-                "date": String(dateStr)
+                "date": String(dateStr),
+                "participant": "test"
             ]
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
