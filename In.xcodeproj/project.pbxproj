@@ -103,13 +103,13 @@
 			isa = PBXGroup;
 			children = (
 				AD9A02621CAF4096008862AD /* NewConversationController.swift */,
-				098EF17B1CB1609900471087 /* SearchContactViewController.swift */,
-				098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */,
-				098EF17F1CB160B500471087 /* ContactsViewController.swift */,
 				AD9A02361CAF3A1D008862AD /* ViewController.swift */,
 				094144461CB01F4200944F69 /* NewConversationViewController.swift */,
 				094144441CB01B6000944F69 /* ConversationViewController.swift */,
 				098EF1831CB1649600471087 /* ConversationTableCellController.swift */,
+				098EF17F1CB160B500471087 /* ContactsViewController.swift */,
+				098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */,
+				098EF17B1CB1609900471087 /* SearchContactViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

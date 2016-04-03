@@ -12,7 +12,7 @@ import Firebase
 import ContactsUI
 import Contacts
 
-class NewConversationViewController: UIViewController {
+class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     
     @IBOutlet weak var expirationDate: UIDatePicker!
     @IBOutlet weak var conversationName: UITextField!
@@ -36,14 +36,19 @@ class NewConversationViewController: UIViewController {
 
         
     }
-   
+    //returns selected contact
+    func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact){
+        print(contact)
+    }
+    
     @IBAction func showAllContacts(sender: AnyObject) {
         let contactPickerViewController = CNContactPickerViewController()
+        contactPickerViewController.delegate = self
         presentViewController(contactPickerViewController, animated: true, completion: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(self.expirationDate.date)
+        // print(self.expirationDate.date)
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
         print(String(navVc.viewControllers.first!.classForCoder))
@@ -52,6 +57,7 @@ class NewConversationViewController: UIViewController {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = "1e7110ff-86b9-442b-85b7-b225749875b2"
             chatVc.senderDisplayName = "peter"
+        //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
             let conversationItem = [

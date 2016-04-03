@@ -47,6 +47,15 @@ class ConversationViewController: JSQMessagesViewController {
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        conversationRef.observeEventType(.Value, withBlock: {
+            snapshot in
+            print("\(snapshot.key) -> \(snapshot.value)")
+            print(snapshot.value)
+            let convDict = snapshot.value as! NSDictionary
+            let convName = (convDict.valueForKey("name"))!
+            print (convName)
+        })
+
     }
     
     override func viewDidAppear(animated: Bool) {
