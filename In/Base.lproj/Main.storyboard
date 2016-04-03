@@ -94,11 +94,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Form for conversation, on submit the form closes." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="imv-Qg-4ih">
-                                <rect key="frame" x="129" y="245" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
@@ -120,19 +115,45 @@
                                     <segue destination="e8R-dN-GsY" kind="show" identifier="createConvo" id="Joe-PG-5vu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-DX-RnB">
+                                <rect key="frame" x="46" y="153" width="110" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
+                                <rect key="frame" x="130" y="70" width="340" height="122"/>
+                                <date key="date" timeIntervalSinceReferenceDate="481326718.17660302">
+                                    <!--2016-04-02 21:51:58 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conversation Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-Yo-nu3">
+                                <rect key="frame" x="46" y="289" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MY-FDg">
+                                <rect key="frame" x="212" y="289" width="176" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ez9-Ub-kHK" secondAttribute="trailing" id="9xh-ZD-AKd"/>
                             <constraint firstItem="ez9-Ub-kHK" firstAttribute="top" secondItem="EZC-H0-vIM" secondAttribute="top" id="Twv-VY-gmr"/>
                             <constraint firstItem="ez9-Ub-kHK" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" id="UIn-iv-xiH"/>
-                            <constraint firstItem="ez9-Ub-kHK" firstAttribute="centerX" secondItem="imv-Qg-4ih" secondAttribute="centerX" id="ciy-Pz-isi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="conversationName" destination="YKm-MY-FDg" id="IqC-PI-ABD"/>
+                        <outlet property="expirationDate" destination="CMP-JZ-wvi" id="d7d-0M-24r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Paq-RH-GMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="-861"/>
+            <point key="canvasLocation" x="1979" y="-796"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gr7-XX-XFY">
@@ -202,6 +223,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aZ6-la-DX5"/>
+        <segue reference="EPN-w7-f5q"/>
     </inferredMetricsTieBreakers>
 </document>
