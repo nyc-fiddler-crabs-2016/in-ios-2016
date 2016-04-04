@@ -77,14 +77,14 @@
                     <navigationItem key="navigationItem" title="Conversation Title" id="KZb-Cm-8dW">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Conversations" id="2mO-IA-lUn">
                             <connections>
-                                <segue destination="mQu-b3-Q5g" kind="show" id="sKm-St-qeu"/>
+                                <segue destination="SGS-m0-da1" kind="show" id="FVd-HD-WO9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uh-J7-Ay5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1827" y="-363"/>
+            <point key="canvasLocation" x="1983" y="-305"/>
         </scene>
         <!--NewConversation-->
         <scene sceneID="3Ms-LY-vE7">
@@ -98,13 +98,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Start Conversation" id="Omv-NE-OCj">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dmm-9z-dRh">
+                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="HKU-fz-saG"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="iad-c2-H4K">
                                             <connections>
-                                                <segue destination="SGS-m0-da1" kind="show" identifier="backHome" id="hOK-0m-dA4"/>
+                                                <segue destination="SGS-m0-da1" kind="show" id="iND-HN-KpW"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add contacts" id="QhL-aG-jow">
@@ -115,71 +116,68 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="When?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-DX-RnB">
-                                <rect key="frame" x="46" y="195" width="110" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="FvT-HU-qH7"/>
-                                    <constraint firstAttribute="width" constant="110" id="lXd-mB-eHG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
-                                <rect key="frame" x="179" y="147" width="393" height="87"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="87" id="JFw-J5-gBp"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="481326718.17660302">
-                                    <!--2016-04-02 21:51:58 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Conversation Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-Yo-nu3">
-                                <rect key="frame" x="46" y="298" width="150" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MY-FDg">
-                                <rect key="frame" x="245" y="289" width="327" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Participants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-KI-tBK">
-                                <rect key="frame" x="46" y="407" width="526" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-ax-dxe">
-                                <rect key="frame" x="236" y="489" width="128" height="30"/>
-                                <state key="normal" title="Start Conversation"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-ax-dxe">
+                                <rect key="frame" x="236" y="491" width="128" height="30"/>
+                                <state key="normal" title="Start Conversation">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="newConversationDidTouch:" destination="ZaN-R3-efG" eventType="touchUpInside" id="NHf-5V-Lvt"/>
                                     <segue destination="e8R-dN-GsY" kind="show" identifier="createConvo" id="Joe-PG-5vu"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
+                                <rect key="frame" x="20" y="147" width="552" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="JFw-J5-gBp"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="481326718.17660302">
+                                    <!--2016-04-02 21:51:58 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Conversation name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MY-FDg">
+                                <rect key="frame" x="20" y="301" width="552" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-DX-RnB">
+                                <rect key="frame" x="242" y="100" width="117" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="FvT-HU-qH7"/>
+                                    <constraint firstAttribute="width" constant="117" id="lXd-mB-eHG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-KI-tBK">
+                                <rect key="frame" x="20" y="383" width="527" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="C8e-Gt-MzS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sch-Yo-nu3" firstAttribute="bottom" secondItem="YKm-MY-FDg" secondAttribute="bottom" id="0ym-Yg-XUo"/>
                             <constraint firstAttribute="trailing" secondItem="ez9-Ub-kHK" secondAttribute="trailing" id="9xh-ZD-AKd"/>
-                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="leading" secondItem="MaQ-DX-RnB" secondAttribute="trailing" constant="23" id="AC9-BD-JQ4"/>
-                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="centerX" secondItem="ez9-Ub-kHK" secondAttribute="centerX" id="Eg3-jc-lse"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="leading" secondItem="MaQ-DX-RnB" secondAttribute="trailing" constant="-339" id="AC9-BD-JQ4"/>
+                            <constraint firstItem="YKm-MY-FDg" firstAttribute="leading" secondItem="CMP-JZ-wvi" secondAttribute="leading" id="Djn-LV-Y1B"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="centerX" secondItem="ez9-Ub-kHK" secondAttribute="centerX" constant="-4" id="Eg3-jc-lse"/>
                             <constraint firstItem="CMP-JZ-wvi" firstAttribute="trailing" secondItem="YKm-MY-FDg" secondAttribute="trailing" id="ElW-FL-TpQ"/>
-                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="top" secondItem="ez9-Ub-kHK" secondAttribute="bottom" constant="83" id="MqH-jd-yo2"/>
-                            <constraint firstItem="MtB-wa-KqU" firstAttribute="top" secondItem="g5g-ax-dxe" secondAttribute="bottom" constant="44" id="T6Q-Tj-dkA"/>
-                            <constraint firstItem="ez9-Ub-kHK" firstAttribute="top" secondItem="EZC-H0-vIM" secondAttribute="top" id="Twv-VY-gmr"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="top" secondItem="ez9-Ub-kHK" secondAttribute="bottom" constant="75" id="MqH-jd-yo2"/>
+                            <constraint firstItem="YKm-MY-FDg" firstAttribute="leading" secondItem="QJb-KI-tBK" secondAttribute="leading" id="SRR-sa-mSD"/>
+                            <constraint firstItem="MtB-wa-KqU" firstAttribute="top" secondItem="g5g-ax-dxe" secondAttribute="bottom" constant="79" id="T6Q-Tj-dkA"/>
+                            <constraint firstItem="ez9-Ub-kHK" firstAttribute="top" secondItem="EZC-H0-vIM" secondAttribute="top" constant="28" id="Twv-VY-gmr"/>
                             <constraint firstItem="ez9-Ub-kHK" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" id="UIn-iv-xiH"/>
-                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leadingMargin" constant="26" id="UJb-DC-Sr0"/>
-                            <constraint firstItem="YKm-MY-FDg" firstAttribute="leading" secondItem="Sch-Yo-nu3" secondAttribute="trailing" constant="49" id="USn-2z-4Bj"/>
-                            <constraint firstItem="Sch-Yo-nu3" firstAttribute="leading" secondItem="QJb-KI-tBK" secondAttribute="leading" id="Xwj-Lx-zZ8"/>
-                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="leading" secondItem="Sch-Yo-nu3" secondAttribute="leading" id="aHZ-aL-mgT"/>
-                            <constraint firstItem="YKm-MY-FDg" firstAttribute="top" secondItem="CMP-JZ-wvi" secondAttribute="bottom" constant="55" id="cTD-9u-LKU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QJb-KI-tBK" secondAttribute="trailing" constant="8" id="cWS-VY-8iF"/>
-                            <constraint firstItem="QJb-KI-tBK" firstAttribute="top" secondItem="Sch-Yo-nu3" secondAttribute="bottom" constant="88" id="cXe-ry-nkm"/>
-                            <constraint firstItem="g5g-ax-dxe" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" constant="217" id="ceh-s2-wmg"/>
-                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="bottom" secondItem="CMP-JZ-wvi" secondAttribute="bottom" id="kmF-ZD-Pnu"/>
+                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leadingMargin" constant="222" id="UJb-DC-Sr0"/>
+                            <constraint firstItem="YKm-MY-FDg" firstAttribute="top" secondItem="CMP-JZ-wvi" secondAttribute="bottom" constant="32" id="cTD-9u-LKU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QJb-KI-tBK" secondAttribute="trailing" constant="33" id="cWS-VY-8iF"/>
+                            <constraint firstItem="g5g-ax-dxe" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" constant="236" id="ceh-s2-wmg"/>
+                            <constraint firstItem="QJb-KI-tBK" firstAttribute="top" secondItem="YKm-MY-FDg" secondAttribute="bottom" constant="52" id="f8B-Qs-Hwr"/>
+                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="bottom" secondItem="CMP-JZ-wvi" secondAttribute="bottom" constant="-130" id="kmF-ZD-Pnu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -277,7 +275,7 @@
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-Ut-aev">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Get Started" id="yPc-2t-1YG"/>
+                                    <navigationItem title="Welcome" id="yPc-2t-1YG"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -365,7 +363,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9TZ-ol-ByL"/>
-        <segue reference="hOK-0m-dA4"/>
+        <segue reference="FVd-HD-WO9"/>
     </inferredMetricsTieBreakers>
 </document>
