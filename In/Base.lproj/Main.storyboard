@@ -74,7 +74,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversation Title" id="KZb-Cm-8dW"/>
+                    <navigationItem key="navigationItem" title="Conversation Title" id="KZb-Cm-8dW">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Conversations" id="2mO-IA-lUn">
+                            <connections>
+                                <segue destination="mQu-b3-Q5g" kind="show" id="sKm-St-qeu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uh-J7-Ay5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,8 +98,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Start Conversation" id="Omv-NE-OCj">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="dmm-9z-dRh">
@@ -109,49 +115,71 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-ax-dxe">
-                                <rect key="frame" x="217" y="526" width="137" height="30"/>
-                                <state key="normal" title="Start Conversation!!"/>
-                                <connections>
-                                    <action selector="newConversationDidTouch:" destination="ZaN-R3-efG" eventType="touchUpInside" id="NHf-5V-Lvt"/>
-                                    <segue destination="e8R-dN-GsY" kind="show" identifier="createConvo" id="Joe-PG-5vu"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-DX-RnB">
-                                <rect key="frame" x="46" y="153" width="110" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="When?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-DX-RnB">
+                                <rect key="frame" x="46" y="195" width="110" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="FvT-HU-qH7"/>
+                                    <constraint firstAttribute="width" constant="110" id="lXd-mB-eHG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
-                                <rect key="frame" x="130" y="70" width="340" height="122"/>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
+                                <rect key="frame" x="179" y="147" width="393" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="JFw-J5-gBp"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="481326718.17660302">
                                     <!--2016-04-02 21:51:58 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conversation Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-Yo-nu3">
-                                <rect key="frame" x="46" y="289" width="150" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Conversation Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-Yo-nu3">
+                                <rect key="frame" x="46" y="298" width="150" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MY-FDg">
-                                <rect key="frame" x="212" y="289" width="176" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MY-FDg">
+                                <rect key="frame" x="245" y="289" width="327" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Participants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-KI-tBK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Participants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-KI-tBK">
                                 <rect key="frame" x="46" y="407" width="526" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-ax-dxe">
+                                <rect key="frame" x="236" y="489" width="128" height="30"/>
+                                <state key="normal" title="Start Conversation"/>
+                                <connections>
+                                    <action selector="newConversationDidTouch:" destination="ZaN-R3-efG" eventType="touchUpInside" id="NHf-5V-Lvt"/>
+                                    <segue destination="e8R-dN-GsY" kind="show" identifier="createConvo" id="Joe-PG-5vu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Sch-Yo-nu3" firstAttribute="bottom" secondItem="YKm-MY-FDg" secondAttribute="bottom" id="0ym-Yg-XUo"/>
                             <constraint firstAttribute="trailing" secondItem="ez9-Ub-kHK" secondAttribute="trailing" id="9xh-ZD-AKd"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="leading" secondItem="MaQ-DX-RnB" secondAttribute="trailing" constant="23" id="AC9-BD-JQ4"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="centerX" secondItem="ez9-Ub-kHK" secondAttribute="centerX" id="Eg3-jc-lse"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="trailing" secondItem="YKm-MY-FDg" secondAttribute="trailing" id="ElW-FL-TpQ"/>
+                            <constraint firstItem="CMP-JZ-wvi" firstAttribute="top" secondItem="ez9-Ub-kHK" secondAttribute="bottom" constant="83" id="MqH-jd-yo2"/>
+                            <constraint firstItem="MtB-wa-KqU" firstAttribute="top" secondItem="g5g-ax-dxe" secondAttribute="bottom" constant="44" id="T6Q-Tj-dkA"/>
                             <constraint firstItem="ez9-Ub-kHK" firstAttribute="top" secondItem="EZC-H0-vIM" secondAttribute="top" id="Twv-VY-gmr"/>
                             <constraint firstItem="ez9-Ub-kHK" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" id="UIn-iv-xiH"/>
+                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leadingMargin" constant="26" id="UJb-DC-Sr0"/>
+                            <constraint firstItem="YKm-MY-FDg" firstAttribute="leading" secondItem="Sch-Yo-nu3" secondAttribute="trailing" constant="49" id="USn-2z-4Bj"/>
+                            <constraint firstItem="Sch-Yo-nu3" firstAttribute="leading" secondItem="QJb-KI-tBK" secondAttribute="leading" id="Xwj-Lx-zZ8"/>
+                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="leading" secondItem="Sch-Yo-nu3" secondAttribute="leading" id="aHZ-aL-mgT"/>
+                            <constraint firstItem="YKm-MY-FDg" firstAttribute="top" secondItem="CMP-JZ-wvi" secondAttribute="bottom" constant="55" id="cTD-9u-LKU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QJb-KI-tBK" secondAttribute="trailing" constant="8" id="cWS-VY-8iF"/>
+                            <constraint firstItem="QJb-KI-tBK" firstAttribute="top" secondItem="Sch-Yo-nu3" secondAttribute="bottom" constant="88" id="cXe-ry-nkm"/>
+                            <constraint firstItem="g5g-ax-dxe" firstAttribute="leading" secondItem="EZC-H0-vIM" secondAttribute="leading" constant="217" id="ceh-s2-wmg"/>
+                            <constraint firstItem="MaQ-DX-RnB" firstAttribute="bottom" secondItem="CMP-JZ-wvi" secondAttribute="bottom" id="kmF-ZD-Pnu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -176,12 +204,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-Ut-aev">
-                                <rect key="frame" x="-5" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Get Started" id="yPc-2t-1YG"/>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lms-ub-Asg">
                                 <rect key="frame" x="206" y="97" width="182" height="30"/>
                                 <constraints>
@@ -252,6 +274,12 @@
                                     <action selector="logIn:" destination="pbM-I1-RX5" eventType="touchUpInside" id="dRn-Xv-37k"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-Ut-aev">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Get Started" id="yPc-2t-1YG"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -337,6 +365,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lFF-dQ-zFb"/>
+        <segue reference="9TZ-ol-ByL"/>
+        <segue reference="hOK-0m-dA4"/>
     </inferredMetricsTieBreakers>
 </document>
