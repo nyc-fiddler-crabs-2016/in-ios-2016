@@ -73,15 +73,14 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // print(self.expirationDate.date)
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
         print(String(navVc.viewControllers.first!.classForCoder))
         let ConversationViewControllerStr = "ConversationViewController"
         if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
-            chatVc.senderId = "1e7110ff-86b9-442b-85b7-b225749875b2"
-            chatVc.senderDisplayName = "peter"
+            chatVc.senderId = ref.authData.uid
+//            chatVc.senderDisplayName = query firebase for where auth uid == the id, and get back display name
             //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()

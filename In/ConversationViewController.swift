@@ -21,6 +21,7 @@ class ConversationViewController: JSQMessagesViewController {
     
     return Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(conversationKey)")
     }
+    var conversationName: String!
     
     var userIsTypingRef: Firebase!
     var usersTypingQuery: FQuery!
@@ -40,13 +41,22 @@ class ConversationViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "test"
+        
         setupBubbles()
         messageRef = conversationRef.childByAppendingPath("messages")
         
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        
+        conversationRef.observeEventType(.Value, withBlock: {
+            snapshot in
+            print("\(snapshot.key) -> \(snapshot.value)")
+            print(snapshot.value)
+            let convDict = snapshot.value as! NSDictionary
+            let convName = (convDict.valueForKey("name"))!
+            self.title = convName as! String
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -163,7 +173,7 @@ class ConversationViewController: JSQMessagesViewController {
     
     private func setupBubbles() {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
+        outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleRedColor())
         incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     }
     
