@@ -17,12 +17,14 @@ class ConversationTableViewController: UITableViewController {
     var conversationKey: String!
     
     
+    
+    
     func loadConversations(){
         conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
                 let name = snapshot.value["name"] as! String
                 let owner = snapshot.value["owner"] as! String
-                let participants = snapshot.value["participants"] as! String
+                let participants = snapshot.value["participants"] as! NSArray
                 let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
                 print(conversation.name)
                 print(conversation.participants)
@@ -73,7 +75,7 @@ class ConversationTableViewController: UITableViewController {
         let label = cell.conversationLabel as! UILabel
         let participants = cell.participantLabel as! UILabel
         label.text = conversation.name
-        participants.text = conversation.participants
+        participants.text = conversation.participants.objectAtIndex(0) as! String
 
         return cell
     }

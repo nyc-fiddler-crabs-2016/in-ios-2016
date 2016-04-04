@@ -42,12 +42,13 @@ class SignUpViewController: UIViewController {
                                     print(authData.providerData)
                                     
                                     let newUser = [
+                                        "uid" : authData.uid,
                                         "provider": authData.provider,
                                         "displayName": self.nickname.text,
                                         "phoneNumber": self.phoneNumber.text
                                     ]
                                     
-                                    self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(newUser)
+                                    self.ref.childByAppendingPath("users").childByAppendingPath(self.phoneNumber.text).setValue(newUser)
                                     
                                     self.performSegueWithIdentifier("SignUpToMainPage", sender: self)
                                 }
