@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class ConversationTableViewController: UITableViewController {
     
@@ -19,10 +21,15 @@ class ConversationTableViewController: UITableViewController {
         
         
         func loadConversations(){
-            let conversation1 = Conversation(name: "This Will Not Work", date: "Tomorrow", owner: "Blah Blah Blah", conversationId: "KEOCaVfwpLBMjl9t9BO" )
+            
+            
+            
+            let conversation1 = Conversation(name: "Gold Jerry!! Gold!", date: "Tomorrow", owner: "Blah Blah Blah", conversationId: "KEOCaVfwpLBMjl9t9BO", participants: ["George", "Elaine", "Jerry", "Cosmo", "Bania"] )
+            
+            let conversation2 = Conversation(name: "DBC Meetup", date: "Tomorrow", owner: "Blah Blah Blah", conversationId: "KEOCaVfwpLBMjl9t9BO", participants: ["John", "Joe", "James", "Jerry"] )
         
             
-            conversations += [conversation1]
+            conversations += [conversation1, conversation2]
         }
         
         loadConversations()
@@ -54,16 +61,14 @@ class ConversationTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "ConversationTableCellController"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ConversationTableCellController
+        let cellIdentifier = "ConversationTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ConversationTableViewCell
         
         let conversation = conversations[indexPath.row]
-        print(conversation)
         let label = cell.conversationLabel as! UILabel
+        let participants = cell.participantLabel as! UILabel
         label.text = conversation.name
-        
-
-        
+        participants.text = conversation.participants[0]
 
         return cell
     }

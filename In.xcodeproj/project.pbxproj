@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		094144451CB01B6000944F69 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094144441CB01B6000944F69 /* ConversationViewController.swift */; };
 		094144471CB01F4200944F69 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094144461CB01F4200944F69 /* NewConversationViewController.swift */; };
+		095222D71CB2C0DB00F2A713 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095222D61CB2C0DB00F2A713 /* ConversationTableViewCell.swift */; };
 		097670BA1CB1725500D2C7AE /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097670B91CB1725500D2C7AE /* ConversationTableViewController.swift */; };
 		097670C21CB1A56900D2C7AE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097670C11CB1A56900D2C7AE /* SignUpViewController.swift */; };
 		098EF17C1CB1609900471087 /* SearchContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF17B1CB1609900471087 /* SearchContactViewController.swift */; };
@@ -49,8 +50,9 @@
 /* Begin PBXFileReference section */
 		094144441CB01B6000944F69 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		094144461CB01F4200944F69 /* NewConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		095222D61CB2C0DB00F2A713 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		097670B91CB1725500D2C7AE /* ConversationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
-		097670C11CB1A56900D2C7AE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../../../.Trash/SignUpViewController.swift; sourceTree = "<group>"; };
+		097670C11CB1A56900D2C7AE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		098EF17B1CB1609900471087 /* SearchContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContactViewController.swift; sourceTree = "<group>"; };
 		098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUpdateContactViewController.swift; sourceTree = "<group>"; };
 		098EF17F1CB160B500471087 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				098EF1871CB16CEA00471087 /* Controllers */,
 				AD9A02341CAF3A1D008862AD /* AppDelegate.swift */,
 				AD9A02381CAF3A1D008862AD /* Main.storyboard */,
+				095222D61CB2C0DB00F2A713 /* ConversationTableViewCell.swift */,
 				098EF1881CB16CFD00471087 /* Models */,
 				AD9A023B1CAF3A1D008862AD /* Assets.xcassets */,
 				AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */,
@@ -398,6 +401,7 @@
 				094144471CB01F4200944F69 /* NewConversationViewController.swift in Sources */,
 				098EF1861CB16ACF00471087 /* Conversation.swift in Sources */,
 				AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */,
+				095222D71CB2C0DB00F2A713 /* ConversationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
