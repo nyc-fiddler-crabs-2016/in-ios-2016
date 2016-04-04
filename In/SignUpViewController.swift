@@ -22,25 +22,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func signUp(sender: AnyObject) {
-        
-//        let userObject = [
-//            "nickname": self.nickname.text,
-//            "phoneNumber": self.phoneNumber.text,
-//            "email": self.email.text,
-//            "password": self.password.text
-//        ]
-        
         ref.createUser(self.email.text, password: self.password.text,
                        withValueCompletionBlock: { error, result in
                         if error != nil {
-                            print(error.description)
+                            // something went wrong creating user, throw an error
+                            let alertController = UIAlertController(title: "Ahh!!!", message:
+                                "You need to put in different/better information", preferredStyle: UIAlertControllerStyle.Alert)
+                            alertController.addAction(UIAlertAction(title: "I'll do better next time", style: UIAlertActionStyle.Default,handler: nil))
+                            self.presentViewController(alertController, animated: true, completion: nil)
                         } else {
+                            // create user and sign in
                             let uid = result["uid"] as? String
                             print("Successfully created user account with uid: \(uid)")
                             self.ref.authUser(self.email.text, password: self.password.text) {
                                 error, authData in
                                 if error != nil {
-                                    print(error.description)
                                 } else {
                                     print(authData.uid)
                                     print(authData.providerData)
@@ -52,25 +48,27 @@ class SignUpViewController: UIViewController {
                                     ]
                                     
                                     self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(newUser)
+                                    
+                                    self.performSegueWithIdentifier("SignUpToMainPage", sender: self)
                                 }
                             }
-
+                            
                         }
                         
-                        
         })
-        
-       self.performSegueWithIdentifier("SignUpToMainPage", sender: self) 
-        
     }
     
     @IBAction func logIn(sender: AnyObject) {
         ref.authUser(self.email.text, password: self.password.text) {
             error, authData in
             if error != nil {
+                let alertController = UIAlertController(title: "Ahh!!!", message:
+                    "Your username or password is incorrect :(", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "I'll try again", style: UIAlertActionStyle.Default,handler: nil))
                 
+                self.presentViewController(alertController, animated: true, completion: nil)
+        
                 print(error.description)
-                // figure out how to show errors on front end
             } else {
                 print(authData.uid)
                 print(authData.providerData)
