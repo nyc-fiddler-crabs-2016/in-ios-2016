@@ -11,27 +11,30 @@ import Firebase
 
 
 class ConversationTableViewController: UITableViewController {
-    
-    //MARK: Properties
-    
     var conversations = [Conversation]()
+    let conversationRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations")
+    let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
+    
+    func loadConversations(){
+        conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+                let name = snapshot.value["name"] as! String
+                let owner = snapshot.value["owner"] as! String
+                let participants = snapshot.value["participant"] as! String
+                let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+                print(conversation.name)
+                print(conversation.participants)
+                self.conversations.append(conversation)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            })
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        func loadConversations(){
-            
-            
-            
-            let conversation1 = Conversation(name: "Gold Jerry!! Gold!", date: "Tomorrow", owner: "Blah Blah Blah", conversationId: "KEOCaVfwpLBMjl9t9BO", participants: ["George", "Elaine", "Jerry", "Cosmo", "Bania"] )
-            
-            let conversation2 = Conversation(name: "DBC Meetup", date: "Tomorrow", owner: "Blah Blah Blah", conversationId: "KEOCaVfwpLBMjl9t9BO", participants: ["John", "Joe", "James", "Jerry"] )
-        
-            
-            conversations += [conversation1, conversation2]
-        }
-        
         loadConversations()
         
         
@@ -68,7 +71,7 @@ class ConversationTableViewController: UITableViewController {
         let label = cell.conversationLabel as! UILabel
         let participants = cell.participantLabel as! UILabel
         label.text = conversation.name
-        participants.text = conversation.participants[0]
+        participants.text = conversation.participants
 
         return cell
     }
