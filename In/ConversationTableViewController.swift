@@ -42,8 +42,8 @@ class ConversationTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             })
-            conversationRef.queryOrderedByChild("participants").queryEqualToValue().observeEventType(.ChildAdded, withBlock: { snapshot in
-        })
+        
+        print(conversationRef.queryOrderedByChild("participants").queryEqualToValue(self.myPhoneNumber).observeEventType(.ChildAdded, withBlock: { snapshot in}))
         
     }
 
