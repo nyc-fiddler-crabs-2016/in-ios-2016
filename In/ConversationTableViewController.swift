@@ -13,9 +13,10 @@ import Firebase
 class ConversationTableViewController: UITableViewController {
     var conversations = [Conversation]()
     let conversationRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations")
+    let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
     
     func loadConversations(){
-        conversationRef.queryOrderedByChild("owner").queryEqualToValue("1e7110ff-86b9-442b-85b7-b225749875b2")
+        conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
                 let name = snapshot.value["name"] as! String
                 let owner = snapshot.value["owner"] as! String
@@ -23,13 +24,11 @@ class ConversationTableViewController: UITableViewController {
                 let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
                 print(conversation.name)
                 print(conversation.participants)
-                
                 self.conversations.append(conversation)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
-                
             })
     }
 

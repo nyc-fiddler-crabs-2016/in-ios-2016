@@ -80,6 +80,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
         if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = ref.authData.uid
+            chatVc.senderDisplayName = "Joe K"
 //            chatVc.senderDisplayName = query firebase for where auth uid == the id, and get back display name
             //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
