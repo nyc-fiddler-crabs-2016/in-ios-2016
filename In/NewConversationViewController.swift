@@ -39,29 +39,43 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
         
         
     }
-    var selectedContact = ["Contact" : String()]
-    
+    var selectedContact = [String:String]()
+    var contactsArray = [String]()
     
     @IBOutlet weak var showParticipant: UILabel!
-//    @IBOutlet weak var showParticipant: UILabel!
+
     //returns selected contact
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact){
-        //        print(CNContactPhoneNumbersKey)
+
         var selectedNumber = ""
         
         if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                if (phoneNumber.label == "_$!<Mobile>!$_"){
-                    //some people are stored under "iphone" label, add conditional for this after MVP
+                if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "_$!<iPhone>!$_"){
+                    
                     let a = phoneNumber.value as! CNPhoneNumber
                     selectedNumber = a.stringValue
+                    let almostFormattedNumber = selectedNumber.componentsSeparatedByCharactersInSet(
+                        NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+                    let formattedNumber = almostFormattedNumber.joinWithSeparator("")
+                    usersRef.observeEventType(.Value, withBlock: { snapshot in
+                        
+                        
+                        if snapshot.hasChild(formattedNumber) {
+                            self.selectedContact["\(formattedNumber)"] = ("\(contact.givenName) \(contact.familyName)")
+                            self.showParticipant.text = self.selectedContact["\(formattedNumber)"]
+                            if !self.contactsArray.contains(formattedNumber) {
+                                self.contactsArray.append(formattedNumber)
+                            }
+                            print(self.contactsArray)
+                        } else {
+                            print("Not in database")
+                        }
+                    })
                 }
+                
             }
         }
-        selectedContact["\(contact.givenName)"] = ("\(contact.givenName) \(contact.familyName)")
-        
-        print(selectedContact)
-        showParticipant.text = selectedContact["\(contact.givenName)"]
         
     }
     
@@ -85,11 +99,12 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
             //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
-            let conversationItem = [
-                "name": self.conversationName.text,
+            
+            let conversationItem:Dictionary<String, AnyObject> = [
+                "name": self.conversationName.text!,
                 "owner": chatVc.senderId,
                 "date": String(dateStr),
-                "participant": "test"
+                "participants": contactsArray as NSArray
             ]
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
