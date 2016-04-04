@@ -272,6 +272,7 @@
 				TargetAttributes = {
 					AD9A02301CAF3A1D008862AD = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = E2VNK3FRKN;
 					};
 					AD9A02441CAF3A1E008862AD = {
 						CreatedOnToolsVersion = 7.3;
@@ -539,10 +540,13 @@
 			baseConfigurationReference = A3675113992F460AFA4C2184 /* Pods-In.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = In/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Zack-Mance-Industries.In";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -551,10 +555,13 @@
 			baseConfigurationReference = 819CF699326BA90F32E78C17 /* Pods-In.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = In/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Zack-Mance-Industries.In";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
