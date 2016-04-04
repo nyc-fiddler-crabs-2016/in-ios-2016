@@ -14,7 +14,9 @@ class ConversationTableViewController: UITableViewController {
     var conversations = [Conversation]()
     let conversationRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations")
     let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
+    let userRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/users")
     var conversationKey: String!
+    var myPhoneNumber: String!
     
     
     
@@ -26,14 +28,23 @@ class ConversationTableViewController: UITableViewController {
                 let owner = snapshot.value["owner"] as! String
                 let participants = snapshot.value["participants"] as! NSArray
                 let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
-                print(conversation.name)
-                print(conversation.participants)
                 self.conversations.append(conversation)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
             })
+        let myUser = userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+              self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+               
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            })
+            conversationRef.queryOrderedByChild("participants").queryEqualToValue().observeEventType(.ChildAdded, withBlock: { snapshot in
+        })
+        
     }
 
     
