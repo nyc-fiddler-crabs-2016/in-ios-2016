@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationTableViewCell" rowHeight="90" id="R0u-xH-BiM" customClass="ConversationTableViewCell" customModule="In" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationTableViewCell" rowHeight="90" id="R0u-xH-BiM" customClass="ConversationTableViewCell" customModule="In" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0u-xH-BiM" id="0Px-HB-dQi">
@@ -56,6 +56,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="e8R-dN-GsY" kind="showDetail" identifier="showConversation" id="kWs-7A-8jz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBC-RP-ibb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uh-J7-Ay5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="-305"/>
+            <point key="canvasLocation" x="2053" y="-1137"/>
         </scene>
         <!--NewConversation-->
         <scene sceneID="3Ms-LY-vE7">
@@ -188,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Paq-RH-GMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="-1196"/>
+            <point key="canvasLocation" x="1361" y="-1144"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="DTg-UC-enu">
@@ -341,7 +344,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQh-U1-1aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045" y="-311"/>
+            <point key="canvasLocation" x="2955" y="-1090"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2PJ-ro-fA2">
@@ -364,5 +367,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="FVd-HD-WO9"/>
+        <segue reference="kWs-7A-8jz"/>
     </inferredMetricsTieBreakers>
 </document>

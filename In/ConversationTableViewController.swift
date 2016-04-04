@@ -14,13 +14,15 @@ class ConversationTableViewController: UITableViewController {
     var conversations = [Conversation]()
     let conversationRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations")
     let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
+    var conversationKey: String!
+    
     
     func loadConversations(){
         conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
                 let name = snapshot.value["name"] as! String
                 let owner = snapshot.value["owner"] as! String
-                let participants = snapshot.value["participant"] as! String
+                let participants = snapshot.value["participants"] as! String
                 let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
                 print(conversation.name)
                 print(conversation.participants)
@@ -75,7 +77,22 @@ class ConversationTableViewController: UITableViewController {
 
         return cell
     }
+    
 
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let conversation = conversations[indexPath.row]
+        print(conversation.name)
+        print(conversation.owner)
+        print(conversation.conversationId)
+        conversationKey = conversation.conversationId
+        self.performSegueWithIdentifier("showConversation", sender: rootRef.authData.uid)
+        
+        
+        
+        
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -111,14 +128,20 @@ class ConversationTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if String(segue.destinationViewController.classForCoder) == "UINavigationController" {
+        let navVc = segue.destinationViewController as! UINavigationController
+        let showPage = navVc.viewControllers.first as! ConversationViewController
+        showPage.conversationKey = conversationKey
+        showPage.senderId = rootRef.authData.uid
+        showPage.senderDisplayName = "Joe K"
+        }
     }
-    */
+
 
 }
