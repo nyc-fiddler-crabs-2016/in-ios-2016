@@ -8,10 +8,13 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var deviceToken : NSData?
+    var deviceTokenFireBase:String?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -50,7 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
         print("DEVICE TOKEN = \(deviceToken)")
+        DeviceTokenFireBase = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
+        
+        let TokenForAPN : NSData? = NSData(base64EncodedString: DeviceTokenFireBase!, options: NSDataBase64DecodingOptions(rawValue: 0))
+        
+        print(deviceToken)
+        print(DeviceTokenFireBase!)
+        print(TokenForAPN!)
+
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -61,8 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print(userInfo)
     }
-
     
-
 }
 

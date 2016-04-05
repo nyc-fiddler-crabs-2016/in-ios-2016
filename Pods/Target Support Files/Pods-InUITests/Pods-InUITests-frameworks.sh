@@ -82,14 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$CONFIGURATION_BUILD_DIR/Firebase/Firebase.framework"
-  install_framework "$CONFIGURATION_BUILD_DIR/JSQMessagesViewController/JSQMessagesViewController.framework"
-  install_framework "$CONFIGURATION_BUILD_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$CONFIGURATION_BUILD_DIR/Firebase/Firebase.framework"
-  install_framework "$CONFIGURATION_BUILD_DIR/JSQMessagesViewController/JSQMessagesViewController.framework"
-  install_framework "$CONFIGURATION_BUILD_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
-fi
