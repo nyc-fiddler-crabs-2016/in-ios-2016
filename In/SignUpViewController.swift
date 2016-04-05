@@ -11,6 +11,12 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
+    
+    
+    @IBAction func userTappedBackground(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
     let ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com/")
 
     @IBOutlet weak var nickname: UITextField!
