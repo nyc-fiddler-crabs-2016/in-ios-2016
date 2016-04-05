@@ -11,16 +11,12 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
-//    var deviceToken : String!
-    
     @IBAction func userTappedBackground(sender: AnyObject) {
         view.endEditing(true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Do any additional setup after loading the view.
     }
 
@@ -37,15 +33,15 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUp(sender: AnyObject) {
         
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
-//        print(deviceToken)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let deviceToken = String(data: appDelegate.deviceTokenFireBase, encoding: NSUTF8StringEncoding)
+        print(deviceToken)
         
         
         ref.createUser(self.email.text, password: self.password.text,
                        withValueCompletionBlock: { error, result in
                         if error != nil {
-                            // something went wrong creating user, throw an error
+                            //MARK: User signin/singup error handling
                             let alertController = UIAlertController(title: "Ahh!!!", message:
                                 "You need to put in different/better information", preferredStyle: UIAlertControllerStyle.Alert)
                             alertController.addAction(UIAlertAction(title: "I'll do better next time", style: UIAlertActionStyle.Default,handler: nil))
@@ -58,10 +54,6 @@ class SignUpViewController: UIViewController {
                                 error, authData in
                                 if error != nil {
                                 } else {
-                                    
-                                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                                    let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
-                                    
 //                                    print(authData.uid)
 //                                    print(authData.providerData)
 //                                    print("Global Variable Token-------------")
@@ -71,7 +63,7 @@ class SignUpViewController: UIViewController {
                                         "provider": authData.provider,
                                         "displayName": self.nickname.text,
                                         "phoneNumber": self.phoneNumber.text,
-//                                        "deviceToken": deviceToken
+//                                      "deviceToken": deviceToken
                                     ]
                                     
                                     self.ref.childByAppendingPath("users").childByAppendingPath(self.phoneNumber.text).setValue(newUser)
@@ -79,9 +71,7 @@ class SignUpViewController: UIViewController {
                                     self.performSegueWithIdentifier("SignUpToMainPage", sender: self)
                                 }
                             }
-                            
                         }
-                        
         })
     }
     
@@ -105,28 +95,20 @@ class SignUpViewController: UIViewController {
         
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
-//
-//        // Do any additional setup after loading the view.
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+//    }
+    
 
 }

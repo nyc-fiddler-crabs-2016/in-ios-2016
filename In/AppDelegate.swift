@@ -8,13 +8,14 @@
 
 import UIKit
 
-var DeviceTokenFireBase:String?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var deviceToken : NSData?
+    var deviceTokenFireBase:String?
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
