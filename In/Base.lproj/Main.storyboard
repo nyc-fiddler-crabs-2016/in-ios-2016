@@ -72,10 +72,13 @@
                         <viewControllerLayoutGuide type="top" id="ieI-XG-UoO"/>
                         <viewControllerLayoutGuide type="bottom" id="YbP-jk-43n"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1BE-8y-lZM">
+                    <view key="view" contentMode="scaleToFill" id="1BE-8y-lZM" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="userTappedBackground:" destination="TTs-EY-WL6" eventType="touchDown" id="6Iu-5H-uSc"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Conversation Title" id="KZb-Cm-8dW">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Conversations" id="2mO-IA-lUn">
@@ -97,7 +100,7 @@
                         <viewControllerLayoutGuide type="top" id="hCu-E0-4Gu"/>
                         <viewControllerLayoutGuide type="bottom" id="MtB-wa-KqU"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EZC-H0-vIM">
+                    <view key="view" contentMode="scaleToFill" id="EZC-H0-vIM" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -182,6 +185,9 @@
                             <constraint firstItem="QJb-KI-tBK" firstAttribute="top" secondItem="YKm-MY-FDg" secondAttribute="bottom" constant="52" id="f8B-Qs-Hwr"/>
                             <constraint firstItem="MaQ-DX-RnB" firstAttribute="bottom" secondItem="CMP-JZ-wvi" secondAttribute="bottom" constant="-130" id="kmF-ZD-Pnu"/>
                         </constraints>
+                        <connections>
+                            <action selector="userTappedBackground:" destination="ZaN-R3-efG" eventType="touchDown" id="oKl-3A-FUa"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="conversationName" destination="YKm-MY-FDg" id="IqC-PI-ABD"/>
@@ -201,7 +207,7 @@
                         <viewControllerLayoutGuide type="top" id="GfP-Lg-jes"/>
                         <viewControllerLayoutGuide type="bottom" id="Pvr-n2-2u0"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wZ5-rP-BLo">
+                    <view key="view" contentMode="scaleToFill" id="wZ5-rP-BLo" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -313,6 +319,9 @@
                             <constraint firstItem="Pvr-n2-2u0" firstAttribute="top" secondItem="Gqg-db-5wm" secondAttribute="bottom" constant="314" id="ukr-yH-HnA"/>
                             <constraint firstItem="0n7-Jo-ZZA" firstAttribute="centerY" secondItem="BIc-qO-kHS" secondAttribute="centerY" id="yyz-cE-TB0"/>
                         </constraints>
+                        <connections>
+                            <action selector="userTappedBackground:" destination="pbM-I1-RX5" eventType="touchDown" id="NTF-J1-nIy"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="Password" destination="9Ux-Fn-Bm1" id="10G-1C-AvV"/>
@@ -366,7 +375,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FVd-HD-WO9"/>
-        <segue reference="kWs-7A-8jz"/>
+        <segue reference="iND-HN-KpW"/>
+        <segue reference="Joe-PG-5vu"/>
     </inferredMetricsTieBreakers>
 </document>
