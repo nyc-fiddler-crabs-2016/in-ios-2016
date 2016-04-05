@@ -81,7 +81,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
                             if !self.contactsArray.contains(formattedNumber) {
                                 self.contactsArray.append(formattedNumber)
                             }
-                            print(self.contactsArray)
+//                            print(self.contactsArray)
                         } else {
                             print("Not in database")
                         }
@@ -103,14 +103,13 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         let navVc = segue.destinationViewController as! UINavigationController
-        print(String(navVc.viewControllers.first!.classForCoder))
+//        print(String(navVc.viewControllers.first!.classForCoder))
         let ConversationViewControllerStr = "ConversationViewController"
         if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = ref.authData.uid
             chatVc.senderDisplayName = self.myDisplayName
-//            chatVc.senderDisplayName = query firebase for where auth uid == the id, and get back display name
-            //Above two values are hard coded but shouldn't be
+
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
             
@@ -123,7 +122,35 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
                 "date": String(dateStr),
                 "participants": contactsArray as NSArray
             ]
-            print(self.myDisplayName)
+            //for every item in contactsArray, query database for matching user account (by phone number) and retrieve token
+            //convert token
+            //send notification about new convo to everyone in array except for index 0
+            var user : Firebase!
+
+            for phoneNumber in contactsArray{
+
+                usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
+                    print(snapshot)
+                    var token = snapshot.value["deviceToken"] as! String
+                    let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
+                    // actually send the push notification using NSNotificationCenter
+                    
+                })
+                    
+
+                
+                //                user = usersRef.childByAppendingPath(phoneNumber)
+//                let token = user.queryEqualToValue("deviceToken")
+                print("----------------")
+//                print(token)
+            }
+            
+            
+            
+            
+            
+            
+//            print(self.myDisplayName)
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
         }
