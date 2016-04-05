@@ -24,20 +24,25 @@ class ConversationTableViewController: UITableViewController {
     
     func loadConversations(){
         
-        // Query to find all conversations that I am listed as 'owner'.
-        
-//        conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
-//            .observeEventType(.ChildAdded, withBlock: { snapshot in
-//                let name = snapshot.value["name"] as! String
-//                let owner = snapshot.value["owner"] as! String
-//                let participants = snapshot.value["participants"] as! NSArray
-//                let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
-//                self.conversations.append(conversation)
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.tableView.reloadData()
-//                }
-//            })
+        self.conversationRef.observeEventType(.ChildAdded, withBlock: {snapshot in
+            let currentDate = NSDate()
+            
+            let dateFormatter = NSDateFormatter()
+            var dateAsString = snapshot.value["date"] as! String
+            dateFormatter.locale = NSLocale.currentLocale()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
+            
+            if newDate == newDate.earlierDate(currentDate){
+               snapshot.ref.removeValue()
+            }
+//
+            
+            
+            
+            }
+            
+            )
         
         userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
