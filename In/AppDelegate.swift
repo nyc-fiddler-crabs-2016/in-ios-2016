@@ -12,7 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    // device token for apple
+    var deviceToken : NSData?
+    
+    //device token for firebase
+    var deviceTokenFireBase:String?
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -51,6 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("DEVICE TOKEN = \(deviceToken)")
+        // TokenForAPN will be sent to appl servers
+//        let TokenForAPN : NSData? = NSData(base64EncodedString: deviceTokenFireBase!, options: NSDataBase64DecodingOptions(rawValue: 0))
+        
+        deviceTokenFireBase = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
+        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
