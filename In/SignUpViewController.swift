@@ -28,6 +28,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func signUp(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
         ref.createUser(self.email.text, password: self.password.text,
                        withValueCompletionBlock: { error, result in
                         if error != nil {
@@ -51,7 +53,8 @@ class SignUpViewController: UIViewController {
                                         "uid" : authData.uid,
                                         "provider": authData.provider,
                                         "displayName": self.nickname.text,
-                                        "phoneNumber": self.phoneNumber.text
+                                        "phoneNumber": self.phoneNumber.text,
+                                        "deviceToken": appDelegate.deviceTokenFireBase
                                     ]
                                     
                                     self.ref.childByAppendingPath("users").childByAppendingPath(self.phoneNumber.text).setValue(newUser)
