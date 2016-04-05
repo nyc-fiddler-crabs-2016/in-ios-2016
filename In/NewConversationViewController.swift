@@ -18,6 +18,10 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     @IBOutlet weak var expirationDate: UIDatePicker!
     @IBOutlet weak var conversationName: UITextField!
     
+    @IBAction func userTappedBackground(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
     
     // MARK: Properties
     var ref: Firebase!

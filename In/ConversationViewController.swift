@@ -12,6 +12,10 @@ import JSQMessagesViewController
 
 class ConversationViewController: JSQMessagesViewController {
     
+    @IBAction func userTappedBackground(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
     // MARK: Properties
     let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/")
     var messageRef: Firebase!
