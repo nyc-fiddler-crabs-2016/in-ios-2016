@@ -36,17 +36,28 @@ class ConversationTableViewController: UITableViewController {
             })
         let myUser = userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
-              self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
-               
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
+              
+            self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+                
+            self.conversationRef.queryOrderedByChild("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
+            let snapshotValue = snapshot.value["participants"] as! NSArray
+            let participants = snapshotValue[0]
+                // write code to test any item in the array...
+                if String(participants) == String(self.myPhoneNumber) {
+                    
+                    let name = snapshot.value["name"] as! String
+                    let owner = snapshot.value["owner"] as! String
+                    let participants = snapshot.value["participants"] as! NSArray
+                    let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+                    self.conversations.append(conversation)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
                 }
             })
-        
-        print(conversationRef.queryOrderedByChild("participants").queryEqualToValue(self.myPhoneNumber).observeEventType(.ChildAdded, withBlock: { snapshot in}))
-        
-    }
+        })
 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,9 +106,9 @@ class ConversationTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let conversation = conversations[indexPath.row]
-        print(conversation.name)
-        print(conversation.owner)
-        print(conversation.conversationId)
+//        print(conversation.name)
+//        print(conversation.owner)
+//        print(conversation.conversationId)
         conversationKey = conversation.conversationId
         self.performSegueWithIdentifier("showConversation", sender: rootRef.authData.uid)
         
