@@ -34,24 +34,23 @@ class ConversationTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             })
-        let myUser = userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
+        userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
               
             self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
                 
             self.conversationRef.queryOrderedByChild("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let snapshotValue = snapshot.value["participants"] as! NSArray
-            let participants = snapshotValue[0]
-                // write code to test any item in the array...
-                if String(participants) == String(self.myPhoneNumber) {
-                    
-                    let name = snapshot.value["name"] as! String
-                    let owner = snapshot.value["owner"] as! String
-                    let participants = snapshot.value["participants"] as! NSArray
-                    let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
-                    self.conversations.append(conversation)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.tableView.reloadData()
+            let participants = snapshot.value["participants"] as! NSArray
+                for participant in participants {
+                    if String(participant) == String(self.myPhoneNumber) {
+                        let name = snapshot.value["name"] as! String
+                        let owner = snapshot.value["owner"] as! String
+                        let participants = snapshot.value["participants"] as! NSArray
+                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+                        self.conversations.append(conversation)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             })

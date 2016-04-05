@@ -26,7 +26,6 @@
 		AD9A023F1CAF3A1D008862AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */; };
 		AD9A024A1CAF3A1E008862AD /* InTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02491CAF3A1E008862AD /* InTests.swift */; };
 		AD9A02551CAF3A1E008862AD /* InUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02541CAF3A1E008862AD /* InUITests.swift */; };
-		AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02621CAF4096008862AD /* NewConversationController.swift */; };
 		D3E7DF83142B4B607F35A33E /* Pods_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2448E8F46BBC8C662FDB4FD0 /* Pods_In.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +75,6 @@
 		AD9A02501CAF3A1E008862AD /* InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A02541CAF3A1E008862AD /* InUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InUITests.swift; sourceTree = "<group>"; };
 		AD9A02561CAF3A1E008862AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD9A02621CAF4096008862AD /* NewConversationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConversationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				097670C11CB1A56900D2C7AE /* SignUpViewController.swift */,
-				AD9A02621CAF4096008862AD /* NewConversationController.swift */,
 				098EF17B1CB1609900471087 /* SearchContactViewController.swift */,
 				098EF17D1CB160AC00471087 /* AddUpdateContactViewController.swift */,
 				097670B91CB1725500D2C7AE /* ConversationTableViewController.swift */,
@@ -400,7 +397,6 @@
 				098EF18C1CB16E1800471087 /* User.swift in Sources */,
 				094144471CB01F4200944F69 /* NewConversationViewController.swift in Sources */,
 				098EF1861CB16ACF00471087 /* Conversation.swift in Sources */,
-				AD9A02631CAF4096008862AD /* NewConversationController.swift in Sources */,
 				095222D71CB2C0DB00F2A713 /* ConversationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

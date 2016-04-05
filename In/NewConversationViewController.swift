@@ -23,12 +23,20 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     var ref: Firebase!
     var conversationRef: Firebase!
     var usersRef: Firebase!
+    var myPhoneNumber: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
         conversationRef = ref.childByAppendingPath("conversations")
         usersRef = ref.childByAppendingPath("users")
+        
+        // Return my phone number to self.myPhoneNumber
+        usersRef.queryOrderedByChild("uid").queryEqualToValue(ref.authData.uid)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+                self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+        })
     }
     
     @IBAction func newConversationDidTouch(sender: AnyObject) {
@@ -99,6 +107,9 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
             //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
             let itemRef = conversationRef.childByAutoId()
+            
+            self.contactsArray.append(self.myPhoneNumber)
+            // adds your number as a participant in the conversation (contactsArray) by default
             
             let conversationItem:Dictionary<String, AnyObject> = [
                 "name": self.conversationName.text!,
