@@ -8,12 +8,12 @@
 
 import UIKit
 
+var abcdefg:String?
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var deviceToken : NSData?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -53,6 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("DEVICE TOKEN = \(deviceToken)")
         self.deviceToken = deviceToken
+        abcdefg = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
+        
+//        let tokenAsData : NSData? = NSData(base64EncodedString: abcdefg!, options: NSDataBase64DecodingOptions(rawValue: 0))
+        
+        print("STILL IN APP DELEGATE, global variable printing on next line")
+        print(deviceToken)
+        print(abcdefg)
+//        print(tokenAsData)
+
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -63,8 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print(userInfo)
     }
-
     
-
 }
 

@@ -11,11 +11,19 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
-    
+//    var deviceToken : String!
     
     @IBAction func userTappedBackground(sender: AnyObject) {
         view.endEditing(true)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        // Do any additional setup after loading the view.
+    }
+
     
     let ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com/")
 
@@ -29,9 +37,9 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUp(sender: AnyObject) {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
-        print(deviceToken)
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
+//        print(deviceToken)
         
         
         ref.createUser(self.email.text, password: self.password.text,
@@ -50,16 +58,20 @@ class SignUpViewController: UIViewController {
                                 error, authData in
                                 if error != nil {
                                 } else {
-                                    print(authData.uid)
-                                    print(authData.providerData)
-                                    print("-------------")
-                                    print(deviceToken)
+                                    
+                                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                    let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
+                                    
+//                                    print(authData.uid)
+//                                    print(authData.providerData)
+                                    print("Global Variable Token-------------")
+                                    print(abcdefg)
                                     let newUser = [
                                         "uid" : authData.uid,
                                         "provider": authData.provider,
                                         "displayName": self.nickname.text,
                                         "phoneNumber": self.phoneNumber.text,
-                                        "deviceToken": deviceToken
+//                                        "deviceToken": deviceToken
                                     ]
                                     
                                     self.ref.childByAppendingPath("users").childByAppendingPath(self.phoneNumber.text).setValue(newUser)
@@ -93,11 +105,13 @@ class SignUpViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
+//
+//        // Do any additional setup after loading the view.
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
