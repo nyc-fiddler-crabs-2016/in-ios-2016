@@ -19,6 +19,11 @@ class ConversationViewController: JSQMessagesViewController {
     var conversationKey: String!
     var conversationRef: Firebase!{
     
+        
+    // Remove media button (paperclip) for now
+    self.inputToolbar.contentView.leftBarButtonItem = nil
+        
+    
     return Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(conversationKey)")
     }
     var conversationName: String!
@@ -176,5 +181,7 @@ class ConversationViewController: JSQMessagesViewController {
         outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleRedColor())
         incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     }
+    
+    
     
 }
