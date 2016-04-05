@@ -64,8 +64,8 @@ class SignUpViewController: UIViewController {
                                     
 //                                    print(authData.uid)
 //                                    print(authData.providerData)
-                                    print("Global Variable Token-------------")
-                                    print(abcdefg)
+//                                    print("Global Variable Token-------------")
+//                                    print(abcdefg)
                                     let newUser = [
                                         "uid" : authData.uid,
                                         "provider": authData.provider,

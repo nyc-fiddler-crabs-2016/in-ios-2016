@@ -8,7 +8,8 @@
 
 import UIKit
 
-var abcdefg:String?
+var DeviceTokenFireBase:String?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -51,16 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
         print("DEVICE TOKEN = \(deviceToken)")
-        self.deviceToken = deviceToken
-        abcdefg = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
+        DeviceTokenFireBase = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
         
-//        let tokenAsData : NSData? = NSData(base64EncodedString: abcdefg!, options: NSDataBase64DecodingOptions(rawValue: 0))
+        let TokenForAPN : NSData? = NSData(base64EncodedString: DeviceTokenFireBase!, options: NSDataBase64DecodingOptions(rawValue: 0))
         
-        print("STILL IN APP DELEGATE, global variable printing on next line")
         print(deviceToken)
-        print(abcdefg)
-//        print(tokenAsData)
+        print(DeviceTokenFireBase!)
+        print(TokenForAPN!)
 
     }
     
