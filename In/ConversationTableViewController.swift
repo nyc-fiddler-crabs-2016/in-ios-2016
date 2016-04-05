@@ -17,27 +17,33 @@ class ConversationTableViewController: UITableViewController {
     let userRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/users")
     var conversationKey: String!
     var myPhoneNumber: String!
+    var myDisplayName: String!
     
     
     
     
     func loadConversations(){
-        conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
-            .observeEventType(.ChildAdded, withBlock: { snapshot in
-                let name = snapshot.value["name"] as! String
-                let owner = snapshot.value["owner"] as! String
-                let participants = snapshot.value["participants"] as! NSArray
-                let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
-                self.conversations.append(conversation)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
-                }
-            })
+        
+        // Query to find all conversations that I am listed as 'owner'.
+        
+//        conversationRef.queryOrderedByChild("owner").queryEqualToValue(rootRef.authData.uid)
+//            .observeEventType(.ChildAdded, withBlock: { snapshot in
+//                let name = snapshot.value["name"] as! String
+//                let owner = snapshot.value["owner"] as! String
+//                let participants = snapshot.value["participants"] as! NSArray
+//                let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+//                self.conversations.append(conversation)
+//                
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self.tableView.reloadData()
+//                }
+//            })
+        
         userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
               
             self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+            self.myDisplayName = snapshot.value["displayName"] as! String
                 
             self.conversationRef.queryOrderedByChild("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
             let participants = snapshot.value["participants"] as! NSArray
@@ -162,7 +168,7 @@ class ConversationTableViewController: UITableViewController {
         let showPage = navVc.viewControllers.first as! ConversationViewController
         showPage.conversationKey = conversationKey
         showPage.senderId = rootRef.authData.uid
-        showPage.senderDisplayName = "Joe K"
+        showPage.senderDisplayName = self.myDisplayName
         }
     }
 

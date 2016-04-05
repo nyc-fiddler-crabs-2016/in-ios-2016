@@ -24,6 +24,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     var conversationRef: Firebase!
     var usersRef: Firebase!
     var myPhoneNumber: String!
+    var myDisplayName: String!
     
     
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
         usersRef.queryOrderedByChild("uid").queryEqualToValue(ref.authData.uid)
             .observeEventType(.ChildAdded, withBlock: { snapshot in
                 self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+                self.myDisplayName = snapshot.value["displayName"] as! String
         })
     }
     
@@ -102,7 +104,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
         if String(navVc.viewControllers.first!.classForCoder) == ConversationViewControllerStr {
             let chatVc = navVc.viewControllers.first as! ConversationViewController
             chatVc.senderId = ref.authData.uid
-            chatVc.senderDisplayName = "Joe K"
+            chatVc.senderDisplayName = self.myDisplayName
 //            chatVc.senderDisplayName = query firebase for where auth uid == the id, and get back display name
             //Above two values are hard coded but shouldn't be
             let dateStr = self.expirationDate.date as NSDate
@@ -117,6 +119,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
                 "date": String(dateStr),
                 "participants": contactsArray as NSArray
             ]
+            print(self.myDisplayName)
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
         }
