@@ -14,7 +14,9 @@ class ConversationTableViewController: UITableViewController {
     var conversations = [Conversation]()
     let conversationRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations")
     let rootRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
+    let userRef = Firebase(url: "https://flickering-heat-6121.firebaseio.com/users")
     var conversationKey: String!
+    var myPhoneNumber: String!
     
     
     
@@ -26,16 +28,36 @@ class ConversationTableViewController: UITableViewController {
                 let owner = snapshot.value["owner"] as! String
                 let participants = snapshot.value["participants"] as! NSArray
                 let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
-                print(conversation.name)
-                print(conversation.participants)
                 self.conversations.append(conversation)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
             })
-    }
+        let myUser = userRef.queryOrderedByChild("uid").queryEqualToValue(rootRef.authData.uid)
+            .observeEventType(.ChildAdded, withBlock: { snapshot in
+              
+            self.myPhoneNumber = snapshot.value["phoneNumber"] as! String
+                
+            self.conversationRef.queryOrderedByChild("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
+            let snapshotValue = snapshot.value["participants"] as! NSArray
+            let participants = snapshotValue[0]
+                // write code to test any item in the array...
+                if String(participants) == String(self.myPhoneNumber) {
+                    
+                    let name = snapshot.value["name"] as! String
+                    let owner = snapshot.value["owner"] as! String
+                    let participants = snapshot.value["participants"] as! NSArray
+                    let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+                    self.conversations.append(conversation)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
+                }
+            })
+        })
 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,9 +106,9 @@ class ConversationTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let conversation = conversations[indexPath.row]
-        print(conversation.name)
-        print(conversation.owner)
-        print(conversation.conversationId)
+//        print(conversation.name)
+//        print(conversation.owner)
+//        print(conversation.conversationId)
         conversationKey = conversation.conversationId
         self.performSegueWithIdentifier("showConversation", sender: rootRef.authData.uid)
         
