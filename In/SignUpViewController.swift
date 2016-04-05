@@ -22,6 +22,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func signUp(sender: AnyObject) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let deviceToken = String(data: appDelegate.deviceToken!, encoding: NSUTF8StringEncoding)
+        print(deviceToken)
+        
+        
         ref.createUser(self.email.text, password: self.password.text,
                        withValueCompletionBlock: { error, result in
                         if error != nil {
@@ -40,12 +46,14 @@ class SignUpViewController: UIViewController {
                                 } else {
                                     print(authData.uid)
                                     print(authData.providerData)
-                                    
+                                    print("-------------")
+                                    print(deviceToken)
                                     let newUser = [
                                         "uid" : authData.uid,
                                         "provider": authData.provider,
                                         "displayName": self.nickname.text,
-                                        "phoneNumber": self.phoneNumber.text
+                                        "phoneNumber": self.phoneNumber.text,
+                                        "deviceToken": deviceToken
                                     ]
                                     
                                     self.ref.childByAppendingPath("users").childByAppendingPath(self.phoneNumber.text).setValue(newUser)
