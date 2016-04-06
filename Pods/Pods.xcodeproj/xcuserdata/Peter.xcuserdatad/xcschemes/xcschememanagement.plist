@@ -46,19 +46,9 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>SwiftMoment.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BE9007F43606EA42E9F27A6E7B8B420</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>40F2DABD396D54F2EE72AD229013DD7A</key>
 		<dict>
 			<key>primary</key>
@@ -85,11 +75,6 @@
 			<true/>
 		</dict>
 		<key>C6406C97EB28260D135DD1EFEB6F3D60</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DCC89CD2780044D8D35F2AD1F547AB75</key>
 		<dict>
 			<key>primary</key>
 			<true/>
