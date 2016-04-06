@@ -74,7 +74,9 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "_$!<iPhone>!$_"){
+                print("-----------contact-------------")
+                print(contact)
+                if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "iPhone"){
                     
                     let a = phoneNumber.value as! CNPhoneNumber
                     selectedNumber = a.stringValue
