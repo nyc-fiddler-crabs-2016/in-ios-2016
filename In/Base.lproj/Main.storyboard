@@ -63,6 +63,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="e8R-dN-GsY" kind="showDetail" identifier="showConversation" id="kWs-7A-8jz"/>
                     </connections>
@@ -94,6 +95,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uh-J7-Ay5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -111,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez9-Ub-kHK">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="eUe-0D-slY"/>
@@ -145,7 +147,7 @@
                                     <segue destination="e8R-dN-GsY" kind="show" identifier="createConvo" id="Joe-PG-5vu"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CMP-JZ-wvi">
                                 <rect key="frame" x="20" y="147" width="552" height="122"/>
                                 <date key="date" timeIntervalSinceReferenceDate="481326718.17660302">
                                     <!--2016-04-02 21:51:58 +0000-->
@@ -202,6 +204,7 @@
                             <action selector="userTappedBackground:" destination="ZaN-R3-efG" eventType="touchDown" id="oKl-3A-FUa"/>
                         </connections>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="conversationName" destination="YKm-MY-FDg" id="IqC-PI-ABD"/>
                         <outlet property="expirationDate" destination="CMP-JZ-wvi" id="d7d-0M-24r"/>
@@ -309,6 +312,7 @@
                             <action selector="userTappedBackground:" destination="pbM-I1-RX5" eventType="touchDown" id="NTF-J1-nIy"/>
                         </connections>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="Password" destination="9Ux-Fn-Bm1" id="10G-1C-AvV"/>
                         <outlet property="email" destination="BIc-qO-kHS" id="nXO-ng-4zy"/>
@@ -365,7 +369,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FVd-HD-WO9"/>
-        <segue reference="kWs-7A-8jz"/>
+        <segue reference="iND-HN-KpW"/>
+        <segue reference="Joe-PG-5vu"/>
     </inferredMetricsTieBreakers>
 </document>
