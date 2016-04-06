@@ -68,7 +68,6 @@ class ConversationViewController: JSQMessagesViewController {
             let convName = (convDict.valueForKey("name"))!
             self.title = convName as! String
             let convDate = (convDict.valueForKey("date")) as! String
-            print(convDate)
             let dateMoment = moment(convDate, dateFormat: "yyyy-MM-dd HH:mm:ss Z")
 
             

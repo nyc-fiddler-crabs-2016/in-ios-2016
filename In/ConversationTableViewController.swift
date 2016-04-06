@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftMoment
 
 
 class ConversationTableViewController: UITableViewController {
@@ -56,20 +57,9 @@ class ConversationTableViewController: UITableViewController {
                     if String(participant) == String(self.myPhoneNumber) {
                         let name = snapshot.value["name"] as! String
                         let owner = snapshot.value["owner"] as! String
+                        let date = snapshot.value["date"] as! String
                         let participants = snapshot.value["participants"] as! NSArray
-//                        var lastMessage: NSDate!
-//                        
-//                        snapshot.ref.childByAppendingPath("messages").queryLimitedToLast(1).observeEventType(.Value, withBlock: {snapshot in
-//                            let dateFormatter = NSDateFormatter()
-//                            var dateAsString = snapshot.value["date"] as! String
-//                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-//                            let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
-//                            lastMessage = newDate
-//                            })
-                        
-//                        let mostRecentMessage = self.convsersationRef.queryOrderedByChild("messages").observeEventType(.Value, withBlock{ snapshot in
-//                            )
-                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
+                        let conversation = Conversation(name: name, date: date, owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
                         self.conversations.append(conversation)
                         dispatch_async(dispatch_get_main_queue()) {
                             self.tableView.reloadData()
@@ -113,14 +103,38 @@ class ConversationTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
         let cellIdentifier = "ConversationTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ConversationTableViewCell
         
         let conversation = conversations[indexPath.row]
-        let label = cell.conversationLabel as! UILabel
-        let participants = cell.participantLabel as! UILabel
-        label.text = conversation.name
-        participants.text = conversation.participants.objectAtIndex(0) as! String
+        var selectedContact = [String]()
+        for participant in conversation.participants {
+            userRef.childByAppendingPath(participant as! String).observeEventType(.Value, withBlock: { snapshot in
+//            print(snapshot.value["displayName"] as! String)
+            selectedContact.append(snapshot.value["displayName"] as! String)
+            let label = cell.conversationLabel as! UILabel
+            var participants = cell.participantLabel as! UILabel
+            var expiration = cell.expirationTimestamp as! UILabel
+            label.text = conversation.name
+            participants.text = selectedContact.joinWithSeparator(", ")
+            
+            let expirationDate = conversation.date as! String
+            let dateMoment = moment(expirationDate, dateFormat: "yyyy-MM-dd HH:mm:ss Z")
+            expiration.text = "Expires on \(dateMoment!.format("yyyy-MM-dd HH:mm"))"
+
+                
+//            let dateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//            dateFormatter.dateStyle = .MediumStyle
+//            let conversationExpiration = dateFormatter.dateFromString(snapshot.value["date"] as! String) as! NSDate
+//            expiration.text = dateFormatter.stringFromDate(conversationExpiration) as! UILabel
+            
+            })
+            
+        }
+        
 
         return cell
     }
@@ -129,9 +143,7 @@ class ConversationTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let conversation = conversations[indexPath.row]
-//        print(conversation.name)
-//        print(conversation.owner)
-//        print(conversation.conversationId)
+        
         conversationKey = conversation.conversationId
         self.performSegueWithIdentifier("showConversation", sender: rootRef.authData.uid)
         

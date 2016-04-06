@@ -74,8 +74,8 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                print("-----------contact-------------")
-                print(contact)
+//                print("-----------contact-------------")
+//                print(contact)
                 if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "iPhone"){
                     
                     let a = phoneNumber.value as! CNPhoneNumber
@@ -151,7 +151,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
             for phoneNumber in contactsArray{
 
                 usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
-                    print(snapshot)
+//                    print(snapshot)
                     var token = snapshot.value["deviceToken"] as! String
                     let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
                     // actually send the push notification using NSNotificationCenter

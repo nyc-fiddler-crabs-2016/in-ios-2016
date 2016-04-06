@@ -16,6 +16,8 @@ class ConversationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var participantLabel: UILabel!
 
+    @IBOutlet weak var expirationTimestamp: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
