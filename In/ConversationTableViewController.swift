@@ -162,7 +162,10 @@ class ConversationTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
         if editingStyle == .Delete {
+            
             var targetDelete = self.conversations[indexPath.row].conversationId
             var firebaseTarget = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(targetDelete)")
             self.conversationRef.observeEventType(.ChildAdded, withBlock: {snapshot in
@@ -186,6 +189,7 @@ class ConversationTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+
 
     /*
     // Override to support rearranging the table view.
