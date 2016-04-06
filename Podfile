@@ -6,6 +6,7 @@ use_frameworks!
 target 'In' do
 pod 'Firebase'
 pod 'JSQMessagesViewController'
+pod 'SwiftMoment'
 
 end
 

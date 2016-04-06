@@ -22,6 +22,7 @@
 		098EF18C1CB16E1800471087 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098EF18B1CB16E1800471087 /* User.swift */; };
 		3CE17EAC3615BB6D99333A5E /* Pods_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0515A9E3CAF26A4A72FE2BBF /* Pods_In.framework */; };
 		8375EF8A59F82A5C1B0C612B /* Pods_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5796CB0F23E0E8CA73141D40 /* Pods_InUITests.framework */; };
+		AD7BA4931CB5A2B3004A3BC5 /* smirk.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BA4921CB5A2B3004A3BC5 /* smirk.png */; };
 		AD9A02351CAF3A1D008862AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02341CAF3A1D008862AD /* AppDelegate.swift */; };
 		AD9A02371CAF3A1D008862AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A02361CAF3A1D008862AD /* ViewController.swift */; };
 		AD9A023A1CAF3A1D008862AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A02381CAF3A1D008862AD /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		77FBB2D2196B2F78317D6881 /* Pods-InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InUITests/Pods-InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97C078F7A5F3D2225AA30394 /* Pods-InTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InTests/Pods-InTests.release.xcconfig"; sourceTree = "<group>"; };
 		97C50AEE745854714796D439 /* Pods-InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InTests/Pods-InTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD7BA4921CB5A2B3004A3BC5 /* smirk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smirk.png; path = Assets.xcassets/smirk.png; sourceTree = "<group>"; };
 		AD9A02311CAF3A1D008862AD /* In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = In.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A02341CAF3A1D008862AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD9A02361CAF3A1D008862AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				098EF1881CB16CFD00471087 /* Models */,
 				AD9A023B1CAF3A1D008862AD /* Assets.xcassets */,
 				AD9A023D1CAF3A1D008862AD /* LaunchScreen.storyboard */,
+				AD7BA4921CB5A2B3004A3BC5 /* smirk.png */,
 				AD9A02401CAF3A1D008862AD /* Info.plist */,
 			);
 			path = In;
@@ -338,6 +341,7 @@
 			files = (
 				AD9A023F1CAF3A1D008862AD /* LaunchScreen.storyboard in Resources */,
 				AD9A023C1CAF3A1D008862AD /* Assets.xcassets in Resources */,
+				AD7BA4931CB5A2B3004A3BC5 /* smirk.png in Resources */,
 				AD9A023A1CAF3A1D008862AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

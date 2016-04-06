@@ -62,7 +62,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         
     }
-    var selectedContact = [String:String]()
+    var selectedContact = [String]()
     var contactsArray = [String]()
     
     @IBOutlet weak var showParticipant: UILabel!
@@ -74,8 +74,8 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                print("-----------contact-------------")
-                print(contact)
+//                print("-----------contact-------------")
+//                print(contact)
                 if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "iPhone"){
                     
                     let a = phoneNumber.value as! CNPhoneNumber
@@ -87,12 +87,13 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
                         
                         
                         if snapshot.hasChild(formattedNumber) {
-                            self.selectedContact["\(formattedNumber)"] = ("\(contact.givenName) \(contact.familyName)")
-                            self.showParticipant.text = self.selectedContact["\(formattedNumber)"]
+                            self.selectedContact.append(("\(contact.givenName) \(contact.familyName)"))
+                            self.showParticipant.text = self.selectedContact.joinWithSeparator(", ")
                             if !self.contactsArray.contains(formattedNumber) {
                                 self.contactsArray.append(formattedNumber)
                             }
-//                            print(self.contactsArray)
+                            print(self.selectedContact)
+                            
                         } else {
                             // send text to Katie Bell
                             if (MFMessageComposeViewController.canSendText()) {
@@ -150,19 +151,13 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
             for phoneNumber in contactsArray{
 
                 usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
-                    print(snapshot)
+//                    print(snapshot)
                     var token = snapshot.value["deviceToken"] as! String
                     let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
                     // actually send the push notification using NSNotificationCenter
                     
                 })
-                    
-
                 
-                //                user = usersRef.childByAppendingPath(phoneNumber)
-//                let token = user.queryEqualToValue("deviceToken")
-                print("----------------")
-//                print(token)
             }
             
             

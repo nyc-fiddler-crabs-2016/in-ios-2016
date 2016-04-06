@@ -50,8 +50,8 @@ class SignUpViewController: UIViewController {
                                 error, authData in
                                 if error != nil {
                                 } else {
-                                    print(authData.uid)
-                                    print(authData.providerData)
+//                                    print(authData.uid)
+//                                    print(authData.providerData)
 
                                     
                                     // not working for self.phoneNumber.text
@@ -89,10 +89,10 @@ class SignUpViewController: UIViewController {
                 
                 self.presentViewController(alertController, animated: true, completion: nil)
         
-                print(error.description)
+//                print(error.description)
             } else {
-                print(authData.uid)
-                print(authData.providerData)
+//                print(authData.uid)
+//                print(authData.providerData)
                 self.performSegueWithIdentifier("SignUpToMainPage", sender: self)
             }
          }

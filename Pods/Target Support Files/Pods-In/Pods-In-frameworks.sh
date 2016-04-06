@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-In/Firebase.framework"
   install_framework "Pods-In/JSQMessagesViewController.framework"
   install_framework "Pods-In/JSQSystemSoundPlayer.framework"
+  install_framework "Pods-In/SwiftMoment.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-In/Firebase.framework"
   install_framework "Pods-In/JSQMessagesViewController.framework"
   install_framework "Pods-In/JSQSystemSoundPlayer.framework"
+  install_framework "Pods-In/SwiftMoment.framework"
 fi

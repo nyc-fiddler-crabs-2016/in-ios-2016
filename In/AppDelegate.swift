@@ -7,9 +7,22 @@
 //
 
 import UIKit
+extension NSData {
+    func hexString() -> String {
+              // "Array" of all bytes:
+            let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
+                // Array of hex strings, one for each byte:
+            let hexBytes = bytes.map { String(format: "%02hhx", $0) }
+                // Concatenate all hex strings:
+            return hexBytes.joinWithSeparator("")
+        
+        }
+    }
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     var window: UIWindow?
     
@@ -28,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerUserNotificationSettings(pushNotificationSettings)
         application.registerForRemoteNotifications()
+        UINavigationBar.appearance().backgroundColor = UIColor.cyanColor()
         
         return true
     }
@@ -60,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TokenForAPN will be sent to appl servers
 //        let TokenForAPN : NSData? = NSData(base64EncodedString: deviceTokenFireBase!, options: NSDataBase64DecodingOptions(rawValue: 0))
         
-        deviceTokenFireBase = deviceToken.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed)
+      deviceTokenFireBase = deviceToken.hexString()
         
     }
     
