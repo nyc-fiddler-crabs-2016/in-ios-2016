@@ -164,11 +164,19 @@ class ConversationViewController: JSQMessagesViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         
+        let date = NSDate()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        
+        let dateString = dateFormatter.stringFromDate(date)
+        
         let itemRef = messageRef.childByAutoId() // 1
         let messageItem = [ // 2
             "text": text,
             "senderId": senderId,
-            "senderdisplayName": senderDisplayName
+            "senderdisplayName": senderDisplayName,
+            "date": dateString
         ]
         itemRef.setValue(messageItem) // 3
         

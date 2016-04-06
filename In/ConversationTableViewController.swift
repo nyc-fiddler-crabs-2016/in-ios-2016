@@ -57,6 +57,8 @@ class ConversationTableViewController: UITableViewController {
                         let name = snapshot.value["name"] as! String
                         let owner = snapshot.value["owner"] as! String
                         let participants = snapshot.value["participants"] as! NSArray
+//                        let mostRecentMessage = self.convsersationRef.queryOrderedByChild("messages").observeEventType(.Value, withBlock{ snapshot in
+//                            )
                         let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
                         self.conversations.append(conversation)
                         dispatch_async(dispatch_get_main_queue()) {
@@ -71,6 +73,7 @@ class ConversationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadConversations()
         
         
