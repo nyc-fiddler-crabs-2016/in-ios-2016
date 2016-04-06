@@ -21,6 +21,8 @@ extension NSData {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     var window: UIWindow?
     
@@ -39,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerUserNotificationSettings(pushNotificationSettings)
         application.registerForRemoteNotifications()
+        UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
         
         return true
     }

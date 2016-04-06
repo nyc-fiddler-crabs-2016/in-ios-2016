@@ -87,8 +87,8 @@
                             <action selector="userTappedBackground:" destination="TTs-EY-WL6" eventType="touchDown" id="6Iu-5H-uSc"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversation Title" prompt="Not Sure where this goes" id="KZb-Cm-8dW">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Conversations" id="2mO-IA-lUn">
+                    <navigationItem key="navigationItem" title="Conversation Title" prompt="Expiration" id="KZb-Cm-8dW">
+                        <barButtonItem key="leftBarButtonItem" title="Conversations" id="2mO-IA-lUn">
                             <connections>
                                 <segue destination="SGS-m0-da1" kind="show" id="FVd-HD-WO9"/>
                             </connections>
@@ -264,6 +264,11 @@
                             </button>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-Ut-aev">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.32549019610000002" green="0.31764705879999999" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="In." id="yPc-2t-1YG"/>
                                 </items>
@@ -346,6 +351,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="shH-yn-Mvd">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="mQu-b3-Q5g" kind="relationship" relationship="rootViewController" id="9TZ-ol-ByL"/>
                     </connections>
@@ -356,7 +365,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iND-HN-KpW"/>
+        <segue reference="FVd-HD-WO9"/>
         <segue reference="kWs-7A-8jz"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="selectedKnobColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.32549019607843138" green="0.31764705882352939" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mHe-2T-ADL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6fa-G5-0CE"/>
                             <constraint firstItem="mHe-2T-ADL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="FVs-xU-8Cf"/>
