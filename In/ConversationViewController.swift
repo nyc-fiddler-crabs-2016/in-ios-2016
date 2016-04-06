@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+import SwiftMoment
+
 
 class ConversationViewController: JSQMessagesViewController {
     
@@ -65,6 +67,12 @@ class ConversationViewController: JSQMessagesViewController {
             let convDict = snapshot.value as! NSDictionary
             let convName = (convDict.valueForKey("name"))!
             self.title = convName as! String
+            let convDate = (convDict.valueForKey("date")) as! String
+            print(convDate)
+            let dateMoment = moment(convDate, dateFormat: "yyyy-MM-dd HH:mm:ss Z")
+
+            
+            self.navigationItem.prompt = "Expires on \(dateMoment!.format("yyyy-MM-dd HH:mm"))"
         })
     }
     
