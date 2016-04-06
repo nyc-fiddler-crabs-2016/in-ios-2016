@@ -80,7 +80,7 @@
                             <action selector="userTappedBackground:" destination="TTs-EY-WL6" eventType="touchDown" id="6Iu-5H-uSc"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversation Title" id="KZb-Cm-8dW">
+                    <navigationItem key="navigationItem" title="Conversation Title" prompt="Not Sure where this goes" id="KZb-Cm-8dW">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Conversations" id="2mO-IA-lUn">
                             <connections>
                                 <segue destination="SGS-m0-da1" kind="show" id="FVd-HD-WO9"/>
@@ -343,7 +343,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lFF-dQ-zFb"/>
+        <segue reference="FVd-HD-WO9"/>
         <segue reference="Joe-PG-5vu"/>
     </inferredMetricsTieBreakers>
 </document>
