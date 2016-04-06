@@ -104,14 +104,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    func keyboardWasShown(notification: NSNotification) {
-        var info = notification.userInfo!
-        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.bottomConstraint.constant = keyboardFrame.size.height + 20
-        })
-    }
 
         // Do any additional setup after loading the view.
     }
