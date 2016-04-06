@@ -57,19 +57,19 @@ class ConversationTableViewController: UITableViewController {
                         let name = snapshot.value["name"] as! String
                         let owner = snapshot.value["owner"] as! String
                         let participants = snapshot.value["participants"] as! NSArray
-                        var lastMessage: NSDate!
-                        
-                        snapshot.ref.childByAppendingPath("messages").queryLimitedToLast(1).observeEventType(.Value, withBlock: {snapshot in
-                            let dateFormatter = NSDateFormatter()
-                            var dateAsString = snapshot.value["date"] as! String
-                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-                            let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
-                            lastMessage = newDate
-                            })
+//                        var lastMessage: NSDate!
+//                        
+//                        snapshot.ref.childByAppendingPath("messages").queryLimitedToLast(1).observeEventType(.Value, withBlock: {snapshot in
+//                            let dateFormatter = NSDateFormatter()
+//                            var dateAsString = snapshot.value["date"] as! String
+//                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//                            let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
+//                            lastMessage = newDate
+//                            })
                         
 //                        let mostRecentMessage = self.convsersationRef.queryOrderedByChild("messages").observeEventType(.Value, withBlock{ snapshot in
 //                            )
-                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: lastMessage)
+                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
                         self.conversations.append(conversation)
                         dispatch_async(dispatch_get_main_queue()) {
                             self.tableView.reloadData()

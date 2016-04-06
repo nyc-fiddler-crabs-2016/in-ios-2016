@@ -11,9 +11,10 @@ import UIKit
 import Firebase
 import ContactsUI
 import Contacts
+import MessageUI
 
 
-class NewConversationViewController: UIViewController, CNContactPickerDelegate {
+class NewConversationViewController: UIViewController, CNContactPickerDelegate, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var expirationDate: UIDatePicker!
 
@@ -91,6 +92,15 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
                             }
 //                            print(self.contactsArray)
                         } else {
+                            // send text to Katie Bell
+                            if (MFMessageComposeViewController.canSendText()) {
+                                let controller = MFMessageComposeViewController()
+                                let emoji = "\u{1F913}"
+                                controller.body = "This app is sweet, you should download it \(emoji)  http://devbootcamp.com/in-ios"
+                                controller.recipients = ["\(formattedNumber)"]
+                                controller.messageComposeDelegate = self
+                                self.presentViewController(controller, animated: true, completion: nil)
+                            }
                             print("Not in database")
                         }
                     })
@@ -162,6 +172,15 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
         }
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
     }
     
 }
