@@ -60,8 +60,8 @@ class ConversationViewController: JSQMessagesViewController {
         
         conversationRef.observeEventType(.Value, withBlock: {
             snapshot in
-            print("\(snapshot.key) -> \(snapshot.value)")
-            print(snapshot.value)
+//            print("\(snapshot.key) -> \(snapshot.value)")
+//            print(snapshot.value)
             let convDict = snapshot.value as! NSDictionary
             let convName = (convDict.valueForKey("name"))!
             self.title = convName as! String
@@ -113,26 +113,45 @@ class ConversationViewController: JSQMessagesViewController {
         return nil
     }
     
-//    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-//        let message = messages[indexPath.item];
-//        print("------message------")
-//        print(message)
-//        
-//        // Sent by me, skip
-//        if message.senderId == rootRef.authData.uid {
-//            return nil;
-//        }
-//        
-//        // Same as previous sender, skip
-//        if indexPath.item > 0 {
-//            let previousMessage = messages[indexPath.item - 1];
-//            if previousMessage.sender() == message.sender() {
-//                return nil;
-//            }
-//        }
-//        
-//        return NSAttributedString(string:message.sender())
-//    }
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item];
+        print("------message------")
+        print(message)
+        
+        // Sent by me, skip
+        if message.senderId == rootRef.authData.uid {
+            return nil;
+        }
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return nil;
+            }
+        }
+        
+        return NSAttributedString(string:message.senderDisplayName)
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        let message = messages[indexPath.item]
+        
+        // Sent by me, skip
+        if message.senderId == rootRef.authData.uid {
+            return CGFloat(0.0);
+        }
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return CGFloat(0.0);
+            }
+        }
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
     
     private func observeMessages() {
         // 1
@@ -142,10 +161,9 @@ class ConversationViewController: JSQMessagesViewController {
             // 3
             let id = snapshot.value["senderId"] as! String
             let text = snapshot.value["text"] as! String
-            let displayName = snapshot.value["senderdisplayName"]
-            print(displayName)
+            let senderDisplayName = snapshot.value["senderDisplayName"] as! String
             // 4
-            self.addMessage(id, text: text)
+            self.addMessage(id, text: text, displayName: senderDisplayName)
             
             // 5
             self.finishReceivingMessage()
@@ -172,8 +190,8 @@ class ConversationViewController: JSQMessagesViewController {
         
     }
     
-    func addMessage(id: String, text: String) {
-        let message = JSQMessage(senderId: id, displayName: "", text: text)
+    func addMessage(id: String, text: String, displayName: String) {
+        let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(message)
     }
     
@@ -196,10 +214,11 @@ class ConversationViewController: JSQMessagesViewController {
         let messageItem = [ // 2
             "text": text,
             "senderId": senderId,
-            "senderdisplayName": senderDisplayName,
+            "senderDisplayName": senderDisplayName,
             "date": dateString
         ]
-        itemRef.setValue(messageItem) // 3
+        itemRef.setValue(messageItem)
+        print(messageItem["senderDisplayName"])
         
         // 4
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
