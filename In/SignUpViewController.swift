@@ -52,6 +52,13 @@ class SignUpViewController: UIViewController {
                                 } else {
                                     print(authData.uid)
                                     print(authData.providerData)
+
+                                    
+                                    // not working for self.phoneNumber.text
+//                                    let almostFormattedNumber = self.phoneNumber.text!.componentsSeparatedByCharactersInSet(
+//                                        NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+//                                    let formattedNumber = almostFormattedNumber.joinWithSeparator("")
+//                                    
                                     
                                     let newUser = [
                                         "uid" : authData.uid,

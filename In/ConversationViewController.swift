@@ -113,6 +113,27 @@ class ConversationViewController: JSQMessagesViewController {
         return nil
     }
     
+//    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+//        let message = messages[indexPath.item];
+//        print("------message------")
+//        print(message)
+//        
+//        // Sent by me, skip
+//        if message.senderId == rootRef.authData.uid {
+//            return nil;
+//        }
+//        
+//        // Same as previous sender, skip
+//        if indexPath.item > 0 {
+//            let previousMessage = messages[indexPath.item - 1];
+//            if previousMessage.sender() == message.sender() {
+//                return nil;
+//            }
+//        }
+//        
+//        return NSAttributedString(string:message.sender())
+//    }
+    
     private func observeMessages() {
         // 1
         let messagesQuery = messageRef.queryLimitedToLast(25)
