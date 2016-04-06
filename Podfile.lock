@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (3.3.0)
   - Firebase (2.5.1)
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
@@ -6,14 +7,18 @@ PODS:
   - SwiftMoment (0.4)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.0)
   - Firebase
   - JSQMessagesViewController
   - SwiftMoment
 
 SPEC CHECKSUMS:
+  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 58d46a5f11170d64d3e7c261d9a0d8eab054415b
+
+COCOAPODS: 1.0.0.beta.5

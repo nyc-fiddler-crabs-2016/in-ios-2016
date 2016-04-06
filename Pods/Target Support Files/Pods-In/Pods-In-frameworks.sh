@@ -84,14 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-In/Firebase.framework"
-  install_framework "Pods-In/JSQMessagesViewController.framework"
-  install_framework "Pods-In/JSQSystemSoundPlayer.framework"
-  install_framework "Pods-In/SwiftMoment.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Firebase/Firebase.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/JSQMessagesViewController/JSQMessagesViewController.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SwiftMoment/SwiftMoment.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-In/Firebase.framework"
-  install_framework "Pods-In/JSQMessagesViewController.framework"
-  install_framework "Pods-In/JSQSystemSoundPlayer.framework"
-  install_framework "Pods-In/SwiftMoment.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Firebase/Firebase.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/JSQMessagesViewController/JSQMessagesViewController.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SwiftMoment/SwiftMoment.framework"
 fi

@@ -4,57 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>JSQSystemSoundPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-In.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-InTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-InUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
+		</dict>
+		<key>SwiftMoment.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>40F2DABD396D54F2EE72AD229013DD7A</key>
+		<key>099A598B1AD307CC2BC9563F548051FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42D659B5D5D40AAAF7E5ADA73A3FB98F</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -75,6 +73,11 @@
 			<true/>
 		</dict>
 		<key>C6406C97EB28260D135DD1EFEB6F3D60</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA4F512384F1C74E37074A97CB0E4D26</key>
 		<dict>
 			<key>primary</key>
 			<true/>

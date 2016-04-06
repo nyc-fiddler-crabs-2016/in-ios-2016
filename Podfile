@@ -7,9 +7,9 @@ target 'In' do
 pod 'Firebase'
 pod 'JSQMessagesViewController'
 pod 'SwiftMoment'
+pod 'Alamofire', '~> 3.0'
 
 end
-
 
 target 'InTests' do
 

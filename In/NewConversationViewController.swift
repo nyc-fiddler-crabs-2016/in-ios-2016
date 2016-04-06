@@ -12,6 +12,7 @@ import Firebase
 import ContactsUI
 import Contacts
 import MessageUI
+import Alamofire
 
 
 class NewConversationViewController: UIViewController, CNContactPickerDelegate, MFMessageComposeViewControllerDelegate {
@@ -148,17 +149,17 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
             //send notification about new convo to everyone in array except for index 0
             var user : Firebase!
 
-            for phoneNumber in contactsArray{
+//            for phoneNumber in contactsArray{
 
-                usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
-//                    print(snapshot)
-                    var token = snapshot.value["deviceToken"] as! String
-                    let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
-                    // actually send the push notification using NSNotificationCenter
-                    
-                })
+//                usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
+////                    print(snapshot)
+//                    var token = snapshot.value["deviceToken"] as! String
+////                    let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
+//                    // actually send the push notification using NSNotificationCenter
                 
-            }
+               
+                
+//            }
             
             
             
@@ -168,6 +169,10 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
 //            print(self.myDisplayName)
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
+            
+            let parameters = ["conv_id":itemRef.key]
+            Alamofire.request(.POST, "https://cryptic-river-41640.herokuapp.com/notifications",parameters: parameters)
+            
         }
     }
     
