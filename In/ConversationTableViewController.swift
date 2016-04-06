@@ -135,17 +135,32 @@ class ConversationTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            var targetDelete = self.conversations[indexPath.row].conversationId
+            var firebaseTarget = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(targetDelete)")
+            self.conversationRef.observeEventType(.ChildAdded, withBlock: {snapshot in
+                if snapshot.value["owner"] as! String == self.rootRef.authData.uid && snapshot.key as! String == targetDelete{
+                    snapshot.ref.removeValue()
+                }
+                firebaseTarget.childByAppendingPath("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
+                    if snapshot.value as! String == self.myPhoneNumber{
+                        print(snapshot.ref.setValue(nil))
+                    }
+                    
+                })
+                
+                
+            })
+            
+            self.conversations.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
