@@ -29,6 +29,8 @@ class SignUpViewController: UIViewController {
     
     
     
+    
+    
     @IBAction func signUp(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
