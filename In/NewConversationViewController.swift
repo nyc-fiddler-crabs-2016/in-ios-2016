@@ -16,6 +16,9 @@ import Contacts
 class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     
     @IBOutlet weak var expirationDate: UIDatePicker!
+
+    
+    
     @IBOutlet weak var conversationName: UITextField!
     
     @IBAction func userTappedBackground(sender: AnyObject) {
@@ -31,11 +34,16 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate {
     var myDisplayName: String!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Firebase(url: "https://flickering-heat-6121.firebaseio.com")
         conversationRef = ref.childByAppendingPath("conversations")
         usersRef = ref.childByAppendingPath("users")
+        let calendar = NSCalendar.currentCalendar()
+        let hourFromNow = calendar.dateByAddingUnit(.Hour, value: 1, toDate: NSDate(), options: [])
+        
+        expirationDate.minimumDate = hourFromNow
         
         // Return my phone number to self.myPhoneNumber
         usersRef.queryOrderedByChild("uid").queryEqualToValue(ref.authData.uid)
