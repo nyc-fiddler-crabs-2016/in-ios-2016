@@ -62,7 +62,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         
     }
-    var selectedContact = [String:String]()
+    var selectedContact = [String]()
     var contactsArray = [String]()
     
     @IBOutlet weak var showParticipant: UILabel!
@@ -87,12 +87,13 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
                         
                         
                         if snapshot.hasChild(formattedNumber) {
-                            self.selectedContact["\(formattedNumber)"] = ("\(contact.givenName) \(contact.familyName)")
-                            self.showParticipant.text = self.selectedContact["\(formattedNumber)"]
+                            self.selectedContact.append(("\(contact.givenName) \(contact.familyName)"))
+                            self.showParticipant.text = self.selectedContact.joinWithSeparator(", ")
                             if !self.contactsArray.contains(formattedNumber) {
                                 self.contactsArray.append(formattedNumber)
                             }
-//                            print(self.contactsArray)
+                            print(self.selectedContact)
+                            
                         } else {
                             // send text to Katie Bell
                             if (MFMessageComposeViewController.canSendText()) {
@@ -156,13 +157,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
                     // actually send the push notification using NSNotificationCenter
                     
                 })
-                    
-
                 
-                //                user = usersRef.childByAppendingPath(phoneNumber)
-//                let token = user.queryEqualToValue("deviceToken")
-                print("----------------")
-//                print(token)
             }
             
             
