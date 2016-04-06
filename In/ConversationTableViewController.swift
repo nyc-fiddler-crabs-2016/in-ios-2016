@@ -57,7 +57,19 @@ class ConversationTableViewController: UITableViewController {
                         let name = snapshot.value["name"] as! String
                         let owner = snapshot.value["owner"] as! String
                         let participants = snapshot.value["participants"] as! NSArray
-                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants)
+//                        var lastMessage: NSDate!
+//                        
+//                        snapshot.ref.childByAppendingPath("messages").queryLimitedToLast(1).observeEventType(.Value, withBlock: {snapshot in
+//                            let dateFormatter = NSDateFormatter()
+//                            var dateAsString = snapshot.value["date"] as! String
+//                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//                            let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
+//                            lastMessage = newDate
+//                            })
+                        
+//                        let mostRecentMessage = self.convsersationRef.queryOrderedByChild("messages").observeEventType(.Value, withBlock{ snapshot in
+//                            )
+                        let conversation = Conversation(name: name, date: "Manana", owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
                         self.conversations.append(conversation)
                         dispatch_async(dispatch_get_main_queue()) {
                             self.tableView.reloadData()
@@ -71,6 +83,7 @@ class ConversationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadConversations()
         
         
@@ -135,17 +148,32 @@ class ConversationTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            var targetDelete = self.conversations[indexPath.row].conversationId
+            var firebaseTarget = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(targetDelete)")
+            self.conversationRef.observeEventType(.ChildAdded, withBlock: {snapshot in
+                if snapshot.value["owner"] as! String == self.rootRef.authData.uid && snapshot.key as! String == targetDelete{
+                    snapshot.ref.removeValue()
+                }
+                firebaseTarget.childByAppendingPath("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
+                    if snapshot.value as! String == self.myPhoneNumber{
+//                        print(snapshot.ref.setValue(nil))
+                    }
+                    
+                })
+                
+                
+            })
+            
+            self.conversations.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

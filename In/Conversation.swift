@@ -16,17 +16,19 @@ class Conversation{
     var owner:String
     var messages = [String]()
     var participants = NSArray()
+    var mostRecentMessage:NSDate
     //String is a placeholder for the Message Object
     
     //MARK: Initializtion
     
-    init(name:String, date:String, owner:String, conversationId:String, participants: NSArray){
+    init(name:String, date:String, owner:String, conversationId:String, participants: NSArray, mostRecentMessage: NSDate){
         //Messages temporarily removed from initialize parameters, put them back in later
         self.name = name
         self.date = date
         self.owner = owner
         self.conversationId = conversationId
         self.participants = participants
+        self.mostRecentMessage = mostRecentMessage
     }
 
 }

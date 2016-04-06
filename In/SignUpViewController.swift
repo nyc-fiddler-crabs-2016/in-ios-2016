@@ -27,6 +27,10 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     
+    
+    
+    
+    
     @IBAction func signUp(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
