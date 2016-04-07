@@ -35,9 +35,12 @@ class ConversationTableViewController: UITableViewController {
             let newDate = dateFormatter.dateFromString(dateAsString) as! NSDate!
             
             if newDate == newDate.earlierDate(currentDate){
-               snapshot.ref.removeValue()
+                snapshot.ref.childByAppendingPath("participants").setValue(["12345678900"])
+                snapshot.ref.childByAppendingPath("owner").setValue("b7fe012b-80c4-4bc4-af28-b887205a89ab")
+                snapshot.ref.childByAppendingPath("messages").setValue(nil)
+                snapshot.ref.childByAppendingPath("name").setValue("EXPIRED")
             }
-//
+
             
             
             
