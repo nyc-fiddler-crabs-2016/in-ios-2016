@@ -38,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        UINavigationBar.appearance().barTintColor = UIColor(red:  83/255.0, green: 81/255.0, blue: 135/255.0, alpha: 100.0/100.0)
+        UINavigationBar.appearance().barTintColor = UIColor(red:  130/255.0, green: 127/255.0, blue: 211/255.0, alpha: 100.0/100.0)
+        
+        UIBarButtonItem.appearance().tintColor = UIColor.lightTextColor()
 
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         
