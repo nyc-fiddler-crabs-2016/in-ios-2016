@@ -81,11 +81,17 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
                     
                     let a = phoneNumber.value as! CNPhoneNumber
                     selectedNumber = a.stringValue
-                    let almostFormattedNumber = selectedNumber.componentsSeparatedByCharactersInSet(
+                    var almostFormattedNumber = selectedNumber.componentsSeparatedByCharactersInSet(
                         NSCharacterSet.decimalDigitCharacterSet().invertedSet)
                     
-                    //                    if NSRegularExpression(/\^1/).firstMatchInString(number1, options: NSMatchingOptions() , range: NSMakeRange(0, 1)) != nil {
+                    print("----")
+                    print(almostFormattedNumber)
                     
+                    if almostFormattedNumber[1] == "1" && almostFormattedNumber[0] == ""{
+                        almostFormattedNumber.removeAtIndex(1)
+                    }
+                    
+                    print(almostFormattedNumber)
                     
                     let formattedNumber = almostFormattedNumber.joinWithSeparator("")
                     usersRef.observeEventType(.Value, withBlock: { snapshot in
