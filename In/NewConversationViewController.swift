@@ -176,4 +176,8 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         self.navigationController?.navigationBarHidden = false
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
 }

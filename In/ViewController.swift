@@ -25,6 +25,9 @@ class ViewController: UIViewController {
         self.performSegueWithIdentifier("toNewConversationForm", sender: self)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
     
     
