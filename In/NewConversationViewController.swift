@@ -83,6 +83,10 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
                     selectedNumber = a.stringValue
                     let almostFormattedNumber = selectedNumber.componentsSeparatedByCharactersInSet(
                         NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+                    
+                    //                    if NSRegularExpression(/\^1/).firstMatchInString(number1, options: NSMatchingOptions() , range: NSMakeRange(0, 1)) != nil {
+                    
+                    
                     let formattedNumber = almostFormattedNumber.joinWithSeparator("")
                     usersRef.observeEventType(.Value, withBlock: { snapshot in
                         
@@ -170,7 +174,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
             
-            let parameters = ["conv_id":itemRef.key]
+            let parameters = ["conv_id":itemRef.key,"type":"conversation"]
             Alamofire.request(.POST, "https://cryptic-river-41640.herokuapp.com/notifications",parameters: parameters)
             
         }
