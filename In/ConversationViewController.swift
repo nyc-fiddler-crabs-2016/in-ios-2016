@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 import SwiftMoment
+import Alamofire
+
+
 
 
 class ConversationViewController: JSQMessagesViewController {
