@@ -120,7 +120,9 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="New Conversation" id="Omv-NE-OCj">
-                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="HKU-fz-saG"/>
+                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="HKU-fz-saG">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="iad-c2-H4K">
                                             <connections>
                                                 <segue destination="SGS-m0-da1" kind="show" id="iND-HN-KpW"/>
@@ -394,7 +396,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="iND-HN-KpW"/>
         <segue reference="Joe-PG-5vu"/>
-        <segue reference="lFF-dQ-zFb"/>
     </inferredMetricsTieBreakers>
 </document>

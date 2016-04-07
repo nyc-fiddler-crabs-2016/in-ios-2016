@@ -84,5 +84,9 @@ class ContactsViewController: UIViewController, CNContactPickerDelegate {
         performSegueWithIdentifier("OpenUpdateContactView", sender: nil)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     
 }

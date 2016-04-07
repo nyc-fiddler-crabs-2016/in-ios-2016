@@ -125,4 +125,7 @@ class SignUpViewController: UIViewController {
     }
     */
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }

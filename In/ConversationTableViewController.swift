@@ -230,5 +230,8 @@ class ConversationTableViewController: UITableViewController {
         }
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
 }

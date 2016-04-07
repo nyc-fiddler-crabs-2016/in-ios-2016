@@ -36,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red:  83/255.0, green: 81/255.0, blue: 135/255.0, alpha: 100.0/100.0)
+
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
@@ -43,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerUserNotificationSettings(pushNotificationSettings)
         application.registerForRemoteNotifications()
-        UINavigationBar.appearance().backgroundColor = UIColor.cyanColor()
         
         return true
     }
