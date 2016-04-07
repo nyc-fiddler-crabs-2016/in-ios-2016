@@ -43,9 +43,9 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         conversationRef = ref.childByAppendingPath("conversations")
         usersRef = ref.childByAppendingPath("users")
         let calendar = NSCalendar.currentCalendar()
-        let hourFromNow = calendar.dateByAddingUnit(.Hour, value: 1, toDate: NSDate(), options: [])
+        let minuteFromNow = calendar.dateByAddingUnit(.Minute, value: 1, toDate: NSDate(), options: [])
         
-        expirationDate.minimumDate = hourFromNow
+        expirationDate.minimumDate = minuteFromNow
         
         // Return my phone number to self.myPhoneNumber
         usersRef.queryOrderedByChild("uid").queryEqualToValue(ref.authData.uid)
@@ -75,8 +75,7 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
         
         if (contact.isKeyAvailable(CNContactPhoneNumbersKey)) {
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-//                print("-----------contact-------------")
-//                print(contact)
+
                 if (phoneNumber.label == "_$!<Mobile>!$_" || phoneNumber.label == "iPhone"){
                     
                     let a = phoneNumber.value as! CNPhoneNumber
@@ -159,24 +158,6 @@ class NewConversationViewController: UIViewController, CNContactPickerDelegate, 
             //send notification about new convo to everyone in array except for index 0
             var user : Firebase!
 
-//            for phoneNumber in contactsArray{
-
-//                usersRef.childByAppendingPath(phoneNumber).observeEventType(.Value, withBlock: { snapshot in
-////                    print(snapshot)
-//                    var token = snapshot.value["deviceToken"] as! String
-////                    let TokenForAPN : NSData? = NSData(base64EncodedString: token, options: NSDataBase64DecodingOptions(rawValue: 0))
-//                    // actually send the push notification using NSNotificationCenter
-                
-               
-                
-//            }
-            
-            
-            
-            
-            
-            
-//            print(self.myDisplayName)
             itemRef.setValue(conversationItem)
             chatVc.conversationKey = itemRef.key
             
