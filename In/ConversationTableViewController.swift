@@ -52,20 +52,22 @@ class ConversationTableViewController: UITableViewController {
             self.myDisplayName = snapshot.value["displayName"] as! String
                 
             self.conversationRef.queryOrderedByChild("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
-            let participants = snapshot.value["participants"] as! NSArray
-                for participant in participants {
-                    if String(participant) == String(self.myPhoneNumber) {
-                        let name = snapshot.value["name"] as! String
-                        let owner = snapshot.value["owner"] as! String
-                        let date = snapshot.value["date"] as! String
+                    if snapshot.value["participants"] != nil {
                         let participants = snapshot.value["participants"] as! NSArray
-                        let conversation = Conversation(name: name, date: date, owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
-                        self.conversations.append(conversation)
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.tableView.reloadData()
+                        for participant in participants {
+                            if String(participant) == String(self.myPhoneNumber) {
+                                let name = snapshot.value["name"] as! String
+                                let owner = snapshot.value["owner"] as! String
+                                let date = snapshot.value["date"] as! String
+                                let participants = snapshot.value["participants"] as! NSArray
+                                let conversation = Conversation(name: name, date: date, owner: owner, conversationId: snapshot.key, participants: participants, mostRecentMessage: NSDate())
+                                self.conversations.append(conversation)
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
                     }
-                }
             })
         })
 
@@ -170,11 +172,15 @@ class ConversationTableViewController: UITableViewController {
             var firebaseTarget = Firebase(url: "https://flickering-heat-6121.firebaseio.com/conversations/\(targetDelete)")
             self.conversationRef.observeEventType(.ChildAdded, withBlock: {snapshot in
                 if snapshot.value["owner"] as! String == self.rootRef.authData.uid && snapshot.key as! String == targetDelete{
-                    snapshot.ref.removeValue()
+                    snapshot.ref.childByAppendingPath("participants").setValue(["12345678900"])
+                    snapshot.ref.childByAppendingPath("owner").setValue("b7fe012b-80c4-4bc4-af28-b887205a89ab")
+                    snapshot.ref.childByAppendingPath("messages").setValue(nil)
+                    snapshot.ref.childByAppendingPath("name").setValue("EXPIRED")
+                    
                 }
                 firebaseTarget.childByAppendingPath("participants").observeEventType(.ChildAdded, withBlock: { snapshot in
                     if snapshot.value as! String == self.myPhoneNumber{
-//                        print(snapshot.ref.setValue(nil))
+                        snapshot.ref.setValue(nil)
                     }
                     
                 })

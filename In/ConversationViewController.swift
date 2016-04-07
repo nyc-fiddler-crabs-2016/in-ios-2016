@@ -65,16 +65,17 @@ class ConversationViewController: JSQMessagesViewController {
         
         conversationRef.observeEventType(.Value, withBlock: {
             snapshot in
-//            print("\(snapshot.key) -> \(snapshot.value)")
-//            print(snapshot.value)
+            
             let convDict = snapshot.value as! NSDictionary
             let convName = (convDict.valueForKey("name"))!
             self.title = convName as! String
             let convDate = (convDict.valueForKey("date")) as! String
             let dateMoment = moment(convDate, dateFormat: "yyyy-MM-dd HH:mm:ss Z")
+            self.navigationItem.prompt = "Expires on \(dateMoment!.format("yyyy-MM-dd HH:mm"))"
+            
 
             
-            self.navigationItem.prompt = "Expires on \(dateMoment!.format("yyyy-MM-dd HH:mm"))"
+            
         })
     }
     
