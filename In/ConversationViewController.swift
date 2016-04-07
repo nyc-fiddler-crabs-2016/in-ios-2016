@@ -230,6 +230,12 @@ class ConversationViewController: JSQMessagesViewController {
         // 4
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
+        //5
+        
+        let parameters = ["conv_id":self.conversationKey,"type":"message"]
+        Alamofire.request(.POST, "https://cryptic-river-41640.herokuapp.com/notifications",parameters: parameters)
+        
+        
         // 5
         finishSendingMessage()
         isTyping = false
